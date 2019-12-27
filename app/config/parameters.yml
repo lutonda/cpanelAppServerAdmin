@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: nova-erp.com
+    database_port: null
+    database_name: novanet_nova_admin
+    database_user: novanet_super
+    database_password: 'DQMq?o&==8r^'
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
