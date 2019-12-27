@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Applications list</h1>
+
+    <table class="datatable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for application in applications %}
+            <tr>
+                <td><a href="{{ path('application_show', { 'id': application.id }) }}">{{ application.id }}</a></td>
+                <td>{{ application.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('application_show', { 'id': application.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('application_edit', { 'id': application.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('application_new') }}">Create a new application</a>
+        </li>
+    </ul>
+{% endblock %}
