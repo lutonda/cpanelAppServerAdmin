@@ -51,7 +51,7 @@ class Client
     private $country;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Application", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Application", mappedBy="client", cascade={"persist"})
      */
     private $applications;
 

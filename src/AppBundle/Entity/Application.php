@@ -37,10 +37,13 @@ class Application
     private $isActive;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client", inversedBy="application")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client", inversedBy="application", cascade={"persist"})
      */
     private $client;
 
+    public function __construct(){
+        $this->isActive=true;
+    }
     /**
      * Get id
      *

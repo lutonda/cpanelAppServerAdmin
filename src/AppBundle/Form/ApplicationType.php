@@ -14,13 +14,13 @@ class ApplicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')
-        ->add('client', ClientType::class, array(
+        ->add('Client', ClientType::class, array(
                 'label'=>'Endereço',
                 'widget_form_group_attr'=>array(
                     'class'=>'row nested_form'
                     )
                 )
-            );;
+            );
     }/**
      * {@inheritdoc}
      */

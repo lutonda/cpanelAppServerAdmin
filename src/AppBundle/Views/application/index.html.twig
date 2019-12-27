@@ -18,7 +18,7 @@
             <tr>
                 <td><a href="{{ path('application_show', { 'id': application.id }) }}">{{ application.id }}</a></td>
                 <td>{{ application.name }}</td>
-                <td>{{ application.client }}</td>
+                <td>{{ application.client.name }}</td>
                 <td>{{ application.isActive }}</td>
                 <td>
                     <ul>
