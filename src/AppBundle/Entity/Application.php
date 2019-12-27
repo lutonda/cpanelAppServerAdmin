@@ -30,6 +30,13 @@ class Application
     private $name;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client", inversedBy="application")
      */
     private $client;
@@ -65,6 +72,30 @@ class Application
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param bool $isActive
+     *
+     * @return Application
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->isActive;
     }
 
 

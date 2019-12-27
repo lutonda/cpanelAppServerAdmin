@@ -6,28 +6,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ApplicationType extends AbstractType
+class ClientType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
-        ->add('client', ClientType::class, array(
-                'label'=>'Endereço',
-                'widget_form_group_attr'=>array(
-                    'class'=>'row nested_form'
-                    )
-                )
-            );;
+        $builder->add('name')->add('email')->add('telephone')->add('country');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Application'
+            'data_class' => 'AppBundle\Entity\Client'
         ));
     }
 
@@ -36,7 +29,7 @@ class ApplicationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_application';
+        return 'appbundle_client';
     }
 
 

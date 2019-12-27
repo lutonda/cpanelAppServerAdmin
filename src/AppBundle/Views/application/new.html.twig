@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
+{% form_theme form '@MopaBootstrap/Form/fields.html.twig' %}
 
 {% block body %}
     <h1>Application creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <button class="btn" type="submit" >Create</button>
     {{ form_end(form) }}
 
     <ul>
