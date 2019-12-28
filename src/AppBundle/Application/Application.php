@@ -13,11 +13,11 @@ class Application{
 
     protected $cPane;
 
-    protected $path='/home/dev/Lab/apps/';//'/home/novanet/';
+    protected $path='workspace/cpanelAppServerAdmin/apps/';//'/home/dev/Lab/apps/';//'/home/novanet/';
 
     public function __construct()
     {
-        $this->cPane=new \cpanelAPI($this->user, $this->password, $this->server);
+        $this->cPane=new cpanelAPI($this->user, $this->password, $this->server);
     }
 
     public static function new($name){

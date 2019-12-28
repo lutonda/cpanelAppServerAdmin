@@ -1,4 +1,7 @@
 <?php
+
+namespace AppBundle\Application;
+
 /**
  * PHP class to handle connections with cPanel's UAPI and API2 specifically through cURL requests as seamlessly and simply as possible.
  *
