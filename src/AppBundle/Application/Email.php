@@ -10,13 +10,13 @@ class Email  implements IApplication{
     }
     
     
-    public function create():bool{
+    public function create(){
 
     }
-    public function update():bool{
+    public function update(){
 
     }
-    public function remove():bool{
+    public function remove(){
 
     }
     public function get(){

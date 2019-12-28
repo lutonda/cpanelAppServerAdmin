@@ -20,7 +20,7 @@ class Application{
         $this->cPane=new cpanelAPI($this->user, $this->password, $this->server);
     }
 
-    public static function new($name){
+    public static function build($name){
 
         $ftp=new FTP();
             $path=$ftp->create($name);

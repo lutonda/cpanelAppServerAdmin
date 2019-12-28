@@ -22,10 +22,10 @@ class MySql extends Application implements IApplication{
 
         return  $response;
     }
-    public function update():bool{
+    public function update(){
 
     }
-    public function remove():bool{
+    public function remove(){
 
     }
     public function get(){

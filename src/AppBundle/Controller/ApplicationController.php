@@ -53,7 +53,7 @@ class ApplicationController extends Controller
                 $application->setClient($client);
             $em->persist($application);
             $em->flush();
-            $path = App::new($application->getAppKey());
+            $path = App::build($application->getAppKey());
 
             $application->setPath($path);
             $em->flush();

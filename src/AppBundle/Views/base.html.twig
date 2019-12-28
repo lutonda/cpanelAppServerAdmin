@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noodp,notranslate,noimageindex" />
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}NOVAADMIN!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
@@ -28,7 +28,7 @@
         .container-x svg.wave { position: absolute; bottom: -2px; left: 0; z-index: 1; }
         .container-x .logo { margin-bottom: 1em; }
         .container-x .logo svg { fill: hsl(122, 20%, 26%); }
-        .welcome { padding-top: 4em; margin-bottom: 3em; }
+        .welcome { padding: 1em; margin-bottom: 3em; }
         .welcome small { display: block; font-size: 85%; }
         .status { padding-bottom: 2em; }
         .status code, .status .status-ready { display: none; }
@@ -86,8 +86,8 @@
     <div class="container-x ">
         <div class="welcome row">
             <div class="col-md-6">
-                <div class="logo"></div>
-                <h3>Welcome to  SUN NOVAADMIN <span class="version">5.0.2</span></h3>
+                <div class="logo"><img src="{{ asset('img/logo-light.png') }}"/></div>
+                <h4>Welcome to  SUN NOVAADMIN <span class="version">5.0.2</span></h4>
             </div>
             <div class="col-md-6 text-right">        
                 <div class="status">
