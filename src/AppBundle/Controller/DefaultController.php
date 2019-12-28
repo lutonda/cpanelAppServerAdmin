@@ -18,4 +18,12 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
+
+    /**
+     * @Route("/logout")
+     * @throws \RuntimeException
+     */
+    public function logoutAction(){
+        throw new \RuntimeException("logout");
+    }
 }

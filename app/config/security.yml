@@ -21,8 +21,9 @@ security:
             security: false
 
         main:
-
-            # ...
+            pattern: ^/
+            provider: backend_users
+            logout: true
             http_basic:
                 realm: Secured Area
             # activate different ways to authenticate

@@ -191,7 +191,7 @@ class Payment
      * @param float $amount
      * @return Payment
      */
-    public function setAmount(float $amount)
+    public function setAmount($amount)
     {
         $this->amount = $amount;
 

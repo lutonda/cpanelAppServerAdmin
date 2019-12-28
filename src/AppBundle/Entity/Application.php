@@ -170,7 +170,7 @@ class Application
      * @param string $appKey
      * @return Application
      */
-    public function setAppKey(string $appKey)
+    public function setAppKey($appKey)
     {
         $this->appKey = $appKey;
 
@@ -189,7 +189,7 @@ class Application
      * @param string $doamin
      * @return Application
      */
-    public function setDomain(string $domain)
+    public function setDomain($domain)
     {
         $this->domain = $domain;
         return $this;
@@ -207,7 +207,7 @@ class Application
      * @param string $path
      * @return Application
      */
-    public function setPath(string $path)
+    public function setPath($path)
     {
         $this->path = $path;
         return $this;

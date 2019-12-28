@@ -12,7 +12,6 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Invoices</th>
                 <th>Warehouses</th>
@@ -26,7 +25,6 @@
         <tbody>
         {% for plan in plans %}
             <tr>
-                <td><a href="{{ path('plan_show', { 'id': plan.id }) }}">{{ plan.id }}</a></td>
                 <td>{{ plan.name }}</td>
                 <td>{{ plan.invoices }}</td>
                 <td>{{ plan.wareHouses }}</td>
@@ -38,9 +36,6 @@
                     <ul>
                         <li>
                             <a href="{{ path('plan_show', { 'id': plan.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('plan_edit', { 'id': plan.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
