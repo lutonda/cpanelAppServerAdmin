@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Applications list</h1>
-
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Applications list</h1>
+        </div>
+        <div class="col-md-6 text-right">
+            <a class="btn btn-primary" href="{{ path('application_new') }}">Create a new application</a>
+        </div>
+    </div>
     <table class="datatable">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Client</th>
                 <th>Status</th>
@@ -16,17 +21,13 @@
         <tbody>
         {% for application in applications %}
             <tr>
-                <td><a href="{{ path('application_show', { 'id': application.id }) }}">{{ application.id }}</a></td>
                 <td>{{ application.name }}</td>
                 <td>{{ application.client.name }}</td>
-                <td>{{ application.isActive }}</td>
+                <td>{% if application.isActive %}<button class="btn btn-xs btn-success"></button>{% else %}<button class="btn btn-xs btn-danger"></button>{% endif %}</td>
                 <td>
                     <ul>
                         <li>
                             <a href="{{ path('application_show', { 'id': application.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('application_edit', { 'id': application.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -35,9 +36,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a class="btn btn-primary" href="{{ path('application_new') }}">Create a new application</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -13,7 +13,7 @@ class Application{
 
     protected $cPane;
 
-    protected $path='workspace/cpanelAppServerAdmin/apps/';//'/home/dev/Lab/apps/';//'/home/novanet/';
+    protected $path='/home/dev/Lab/apps/';//'/home/novanet/';
 
     public function __construct()
     {
@@ -24,11 +24,11 @@ class Application{
 
         $ftp=new FTP();
             $path=$ftp->create($name);
-        $domain=new Domain();
+        /*$domain=new Domain();
             $domain->create($name,$path);
         $mysql=new MySql();
             $mysql->create($name);
-
+*/
             return $path;
     }
 }

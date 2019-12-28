@@ -6,12 +6,10 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button class="btn" type="submit" >Create</button>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a  class="btn btn-secondary" href="{{ path('application_index') }}">Back to the list</a>
+        <button class="btn btn-success" type="submit" >Create</button>
+    </div>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('application_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

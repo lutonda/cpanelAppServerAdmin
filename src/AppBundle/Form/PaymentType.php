@@ -2,6 +2,9 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Application\Application;
+use AppBundle\Entity\Plan;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +16,9 @@ class PaymentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('months')->add('client')->add('application')->add('plan');
+        $builder->add('months')->add('plan',EntityType::class, array(
+            'class' => Plan::class,
+            'choice_label' => 'name'))->add('amount');
     }/**
      * {@inheritdoc}
      */

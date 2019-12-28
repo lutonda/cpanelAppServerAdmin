@@ -35,7 +35,7 @@ class Application
      *
      * @ORM\Column(name="domain", type="string", length=50)
      */
-    private $doamin;
+    private $domain;
 
     /**
      * @var string
@@ -78,7 +78,8 @@ class Application
 
     public function __construct(){
         $this->isActive=true;
-        $this->date=new DateTime();
+        $this->date=new \DateTime();
+        $this->path='/';
     }
     /**
      * Get id
@@ -139,7 +140,7 @@ class Application
 
 
     /**
-     * @return mixed
+     * @return Client
      */
     public function getClient()
     {
@@ -179,18 +180,18 @@ class Application
     /**
      * @return string
      */
-    public function getDoamin()
+    public function getDomain()
     {
-        return $this->doamin;
+        return $this->domain;
     }
 
     /**
      * @param string $doamin
      * @return Application
      */
-    public function setDoamin(string $doamin)
+    public function setDomain(string $domain)
     {
-        $this->doamin = $doamin;
+        $this->domain = $domain;
         return $this;
     }
 

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Application;
 use AppBundle\Entity\Payment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -34,17 +35,18 @@ class PaymentController extends Controller
     /**
      * Creates a new payment entity.
      *
-     * @Route("/new", name="payment_new")
+     * @Route("/new/{id}", name="payment_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Application $application,Request $request)
     {
         $payment = new Payment();
         $form = $this->createForm('AppBundle\Form\PaymentType', $payment);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
+        $payment->setApplication($application);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($payment);
             $em->flush();
 

@@ -2,31 +2,54 @@
 
 {% block body %}
     <h1>Application</h1>
-
-    <table>
-        <tbody>
+<div class="row">
+    <div class="col-md-3">ID</div>
+    <div class="col-md-9">{{ application.id }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">key</div>
+    <div class="col-md-9">{{ application.appKey }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Name</div>
+    <div class="col-md-9">{{ application.name }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Domain</div>
+    <div class="col-md-9">{{ application.domain }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Path</div>
+    <div class="col-md-9">{{ application.path }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Client</div>
+    <div class="col-md-9">{{ application.client.name }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">Payments</div>
+    <div class="col-md-6">
+        <table class="bordered">
+            <tbody>
+            {% for payment in application.payments %}
             <tr>
-                <th>Id</th>
-                <td>{{ application.id }}</td>
+                <th>{{ payment.plan.name }}</th>
+                <td>{{ payment.months }}  Months</td>
+                <td>
+                    {% if payment.dueDate>'now'|date  %}<button class="btn btn-xs btn-success">ok</button>{% endif %}
+                    {% if payment.dueDate is null  %}{% else %}{{ payment.dueDate|date('Y-m-d') }}{% endif %}
+                </td>
             </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ application.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+            {% endfor %}
+            </tbody>
+        </table></div>
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('application_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('application_edit', { 'id': application.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(delete_form) }}
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a  class="btn btn-secondary" href="{{ path('application_index') }}">Back to the list</a>
+            <a  class="btn btn-secondary" href="{{ path('payment_new', { 'id': application.id }) }}">Add Payment</a>
+            <button class="btn btn-success" type="submit" >Disable</button>
+        </div>
+    {{ form_end(delete_form) }}
 {% endblock %}

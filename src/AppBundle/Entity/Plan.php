@@ -62,6 +62,7 @@ class Plan
      */
     private $accounting;
 
+
     /**
      * @var int
      *

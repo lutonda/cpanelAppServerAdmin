@@ -48,11 +48,25 @@ class Payment
     private $date;
 
     /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="due_date", type="datetime", nullable=true)
+     */
+    private $dueDate;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="amount", type="float")
+     */
+    private $amount;
+    /**
      * Payment constructor.
      */
     public function __construct()
     {
-        $this->date=new DateTime();
+        $this->date=new \DateTime();
+        $this->dueDate=null;
     }
 
 
@@ -161,6 +175,44 @@ class Payment
     public function setApplication($application)
     {
         $this->application = $application;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     * @return Payment
+     */
+    public function setAmount(float $amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDueDate()
+    {
+        return $this->dueDate;
+    }
+
+    /**
+     * @param DateTime $dueDate
+     * @return Payment
+     */
+    public function setDueDate(DateTime $dueDate)
+    {
+        $this->dueDate = $dueDate;
 
         return $this;
     }

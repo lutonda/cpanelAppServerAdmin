@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Application;
 use AppBundle\Application\Application as App;
+use AppBundle\Entity\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -46,14 +47,17 @@ class ApplicationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $application->setDoamin($application->getAppKey().'.nova-erp.com');
+            $application->setDomain($application->getAppKey().'.nova-erp.com');
+            $client=$em->getRepository(Client::class)->findOneBy(['email'=>$application->getClient()->getEmail()]);
+            if(!is_null($client))
+                $application->setClient($client);
             $em->persist($application);
             $em->flush();
             $path = App::new($application->getAppKey());
 
             $application->setPath($path);
             $em->flush();
-            return $this->redirectToRoute('application_show', array('id' => $application->getId()));
+            return $this->redirectToRoute('payment_new', array('id' => $application->getId()));
         }
 
         return $this->render('application/new.html.twig', array(

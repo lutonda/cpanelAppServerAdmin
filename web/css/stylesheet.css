@@ -1,6 +1,17 @@
-.row.nested_form label.control-label.col-sm-12.required {
+.row.nested_form > label.control-label.col-sm-3.required {
     width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    background: #FFF;
 }
 .row.nested_form{
-border-top:solid 1px #000
+border-top:solid 1px #FFF
+}
+.row.nested_form > .col-sm-9
+{width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+input, button, select, a{
+    border-radius: 0 !important;
 }

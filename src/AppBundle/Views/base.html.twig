@@ -78,6 +78,7 @@
         }
     </style>
 
+    <link rel="stylesheet" href="{{ asset('css/stylesheet.css') }}">
 </head>
 <body>
 <div class="wrapper">
@@ -92,8 +93,8 @@
                 <div class="status">
                     <div class="btn-group" role="group" aria-label="Basic example">
                     <a href={{ path('application_index')}} type="button" class="btn btn-primary">Applications</a>
-                    <a type="button" class="btn btn-primary">Plans</a>
-                    <a type="button" class="btn btn-primary">Clients</a>
+                    <a href={{ path('plan_index')}} type="button" class="btn btn-primary">Plans</a>
+                    <a href={{ path('client_index')}}  type="button" class="btn btn-primary">Clients</a>
                 </div>
                 <p class="status-ready">Your application is now ready and you can start working on it.</p>
             </div>
@@ -118,7 +119,7 @@
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function(){
-        $('.datatable').DataTable();
+        $('table').DataTable();
     })
 </script>
 </body>
