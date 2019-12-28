@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Payment
@@ -23,15 +24,14 @@ class Payment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client", inversedBy="payments")
-     */
-    private $client;
-
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Plan", inversedBy="payment")
      */
     private $plan;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Application", inversedBy="payment")
+     */
+    private $application;
 
     /**
      * @var int
@@ -40,11 +40,25 @@ class Payment
      */
     private $months;
 
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * Payment constructor.
+     */
+    public function __construct()
+    {
+        $this->date=new DateTime();
+    }
+
 
     /**
      * Get id
      *
-     * @return int
      */
     public function getId()
     {
@@ -63,16 +77,6 @@ class Payment
         $this->client = $client;
 
         return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return int
-     */
-    public function getClient()
-    {
-        return $this->client;
     }
 
     /**
@@ -121,6 +125,44 @@ class Payment
     public function getMonths()
     {
         return $this->months;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param DateTime $date
+     * @return Payment
+     */
+    public function setDate(DateTime $date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return Application
+     */
+    public function getApplication()
+    {
+        return $this->application;
+    }
+
+    /**
+     * @param mixed $application
+     * @return Payment
+     */
+    public function setApplication($application)
+    {
+        $this->application = $application;
+
+        return $this;
     }
 
 

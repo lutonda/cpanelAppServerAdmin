@@ -46,9 +46,13 @@ class ApplicationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $application->setDoamin($application->getAppKey().'.nova-erp.com');
             $em->persist($application);
             $em->flush();
-            $logs = App::new($application->getAppKey());
+            $path = App::new($application->getAppKey());
+
+            $application->setPath($path);
+            $em->flush();
             return $this->redirectToRoute('application_show', array('id' => $application->getId()));
         }
 

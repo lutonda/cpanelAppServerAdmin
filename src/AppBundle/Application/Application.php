@@ -29,7 +29,7 @@ class Application{
         $mysql=new MySql();
             $mysql->create($name);
 
-            return true;
+            return $path;
     }
 }
 

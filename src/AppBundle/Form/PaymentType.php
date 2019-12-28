@@ -13,7 +13,7 @@ class PaymentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('months')->add('client')->add('plan');
+        $builder->add('months')->add('client')->add('application')->add('plan');
     }/**
      * {@inheritdoc}
      */

@@ -55,16 +55,9 @@ class Client
      */
     private $applications;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="account")
-     */
-    private $payments;
-
     /**
      * Get id
      *
-     * @return int
      */
     public function getId()
     {
@@ -182,25 +175,6 @@ class Client
     public function setApplications($applications)
     {
         $this->applications = $applications;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPayments()
-    {
-        return $this->payments;
-    }
-
-    /**
-     * @param mixed $payments
-     * @return Client
-     */
-    public function setPayments($payments)
-    {
-        $this->payments = $payments;
 
         return $this;
     }

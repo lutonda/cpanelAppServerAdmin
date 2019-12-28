@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Application
@@ -32,6 +33,20 @@ class Application
     /**
      * @var string
      *
+     * @ORM\Column(name="domain", type="string", length=50)
+     */
+    private $doamin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=50)
+     */
+    private $path;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
@@ -48,8 +63,22 @@ class Application
      */
     private $client;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="application", cascade={"persist"})
+     */
+    private $payments;
+
+    /**
+     * @var DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
     public function __construct(){
         $this->isActive=true;
+        $this->date=new DateTime();
     }
     /**
      * Get id
@@ -143,6 +172,80 @@ class Application
     public function setAppKey(string $appKey)
     {
         $this->appKey = $appKey;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDoamin()
+    {
+        return $this->doamin;
+    }
+
+    /**
+     * @param string $doamin
+     * @return Application
+     */
+    public function setDoamin(string $doamin)
+    {
+        $this->doamin = $doamin;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * @param string $path
+     * @return Application
+     */
+    public function setPath(string $path)
+    {
+        $this->path = $path;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
+
+    /**
+     * @param mixed $payments
+     * @return Application
+     */
+    public function setPayments($payments)
+    {
+        $this->payments = $payments;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param DateTime $date
+     * @return Application
+     */
+    public function setDate(DateTime $date)
+    {
+        $this->date = $date;
 
         return $this;
     }

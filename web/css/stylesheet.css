@@ -1,0 +1,6 @@
+.row.nested_form label.control-label.col-sm-12.required {
+    width: 100%;
+}
+.row.nested_form{
+border-top:solid 1px #000
+}
