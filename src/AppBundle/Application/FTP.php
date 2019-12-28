@@ -1,8 +1,10 @@
-<%php
+<?php
 
 namespace AppBundle\Application;
 
-class FTP  implements IApplication{
+use Symfony\Component\Config\Definition\Exception\Exception;
+
+class FTP extends Application implements IApplication{
 
 
     public function __contructor(){
@@ -10,16 +12,27 @@ class FTP  implements IApplication{
     }
     
     
-    public function create():bool{
+    public function create($name){
 
-    };
+        try {
+            if (!file_exists($this->path . "/" . $name))
+            mkdir($this->path .  $name, 0700,true);
+                if (!file_exists($this->path . "/" . $name . '/web'))
+            mkdir($this->path .  $name . '/web', 0700);
+
+            exec('cp -r '.$this->path . 'nova/. '.$this->path .  $name . '/');
+            return $this->path .  $name . '/web';
+        }catch (Exception $e) {
+            return '';
+        }
+    }
     public function update():bool{
 
-    };
+    }
     public function remove():bool{
 
-    };
+    }
     public function get(){
         
-    };
+    }
 }

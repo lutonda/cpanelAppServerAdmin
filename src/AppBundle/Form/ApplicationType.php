@@ -14,13 +14,23 @@ class ApplicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')
-        ->add('Client', ClientType::class, array(
-                'label'=>'Endereço',
-                'widget_form_group_attr'=>array(
-                    'class'=>'row nested_form'
+                ->add('appKey', null, array(
+                'label'=>'Domain',
+                "widget_btn_append" => array(
+                    array(
+                        "type" => "button",
+                        "label" => "nova-erp.com",
+                        "icon" => 'barcode',
+                        "icon_inverted" => false,
                     )
-                )
-            );
+                )))
+                ->add('Client', ClientType::class, array(
+                        'label'=>'Client',
+                        'widget_form_group_attr'=>array(
+                            'class'=>'row nested_form'
+                            )
+                        )
+                    );
     }/**
      * {@inheritdoc}
      */

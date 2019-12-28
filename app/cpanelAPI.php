@@ -20,8 +20,7 @@
 /**
  * Class cPanelAPI
  */
- 
-namespace AppBundle\Application;
+
 
 class cpanelAPI
 {

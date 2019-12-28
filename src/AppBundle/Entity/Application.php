@@ -25,6 +25,13 @@ class Application
     /**
      * @var string
      *
+     * @ORM\Column(name="app_key", type="string", length=50)
+     */
+    private $appKey;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
@@ -117,6 +124,25 @@ class Application
     public function setClient($client)
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppKey()
+    {
+        return $this->appKey;
+    }
+
+    /**
+     * @param string $appKey
+     * @return Application
+     */
+    public function setAppKey(string $appKey)
+    {
+        $this->appKey = $appKey;
 
         return $this;
     }

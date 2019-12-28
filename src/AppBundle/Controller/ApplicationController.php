@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Application;
+use AppBundle\Application\Application as App;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +48,7 @@ class ApplicationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($application);
             $em->flush();
-
+            $logs = App::new($application->getAppKey());
             return $this->redirectToRoute('application_show', array('id' => $application->getId()));
         }
 
