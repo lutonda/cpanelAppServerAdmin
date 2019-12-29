@@ -50,7 +50,7 @@ class PaymentController extends Controller
             $em->persist($payment);
             $em->flush();
 
-            return $this->redirectToRoute('payment_show', array('id' => $payment->getId()));
+            return $this->redirectToRoute('application_show', array('id' => $application->getId()));
         }
 
         return $this->render('payment/new.html.twig', array(

@@ -6,12 +6,10 @@
     {{ form_start(form) }}
     {{ payment.application.name }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('payment_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a  class="btn btn-secondary" href="{{ path('application_show',{id:payment.application.id}) }}">Back to application</a>
+        <button class="btn btn-success" type="submit" >Create</button>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

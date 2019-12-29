@@ -16,7 +16,7 @@
 </div>
 <div class="row">
     <div class="col-md-3">Domain</div>
-    <div class="col-md-9">{{ application.domain }}</div>
+    <div class="col-md-9">{{ application.domain }} <a href="https://{{ application.domain }}" target="_blank"><i class="fa fa-external-link"></i></a> </div>
 </div>
 <div class="row">
     <div class="col-md-3">Path</div>
@@ -42,9 +42,10 @@
             </tr>
             {% endfor %}
             </tbody>
-        </table></div>
+        </table>
+    </div>
 </div>
-
+<hr/>
     {{ form_start(delete_form) }}
         <div class="btn-group" role="group" aria-label="Basic example">
             <a  class="btn btn-secondary" href="{{ path('application_index') }}">Back to the list</a>

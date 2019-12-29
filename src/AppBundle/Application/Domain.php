@@ -9,9 +9,9 @@ class Domain extends Application implements IApplication {
     }
 
     
-    public function create($subdomain, $folder){
+    public function create($subdomain){
         
-        $response = $this->cPane->uapi->SubDomain->addsubdomain(['rootdomain' => $this->rootdomain, 'domain' => $subdomain,'dir'=>$folder]);
+        $response = $this->cPane->uapi->SubDomain->addsubdomain(['rootdomain' => $this->rootdomain, 'domain' => $subdomain,'dir'=>$this->path . "/" . $subdomain . '/web']);
 
         return $response;
     }

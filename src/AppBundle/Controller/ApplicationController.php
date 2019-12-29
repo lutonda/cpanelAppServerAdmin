@@ -26,6 +26,7 @@ class ApplicationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+
         $applications = $em->getRepository('AppBundle:Application')->findAll();
 
         return $this->render('application/index.html.twig', array(
@@ -53,10 +54,12 @@ class ApplicationController extends Controller
                 $application->setClient($client);
             $em->persist($application);
             $em->flush();
+            print_r('<style>*{color: #96ffe9; font-size: 14px; font-family: Arial, Helvetica, sans-serif; background: #000}</style><div style="text-align: center"><img style="margin: 5%" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/b6e0b072897469.5bf6e79950d23.gif"/><h1>I N S T A L I N G . . . </h1></div>');
             $path = App::build($application->getAppKey());
 
             $application->setPath($path);
             $em->flush();
+            print_r('<a href="'.$this->generateUrl('payment_new', array('id' => $application->getId())).'">Click here to go to the next Step</a>');
             return $this->redirectToRoute('payment_new', array('id' => $application->getId()));
         }
 

@@ -11,9 +11,9 @@ class Application{
     protected $password="Z8XE1Yi4*-ko8)";
     protected $server="cpanel.nova-erp.com";
 
-    protected $cPane;
+    public $cPane;
 
-    protected $path='/home/dev/Lab/apps/';//'/home/novanet/';
+    protected $path='/home/novanet/apps/';
 
     public function __construct()
     {
@@ -22,14 +22,28 @@ class Application{
 
     public static function build($name){
 
+
+        $domain=new Domain();
+            $domain=$domain->create($name);
+            var_dump($domain);
+
+        print_r('<hr>');
+        $mysql=new MySql();
+            $mysql=$mysql->create($name);
+            var_dump($mysql);
+
+        print_r('<hr>');
         $ftp=new FTP();
             $path=$ftp->create($name);
-        /*$domain=new Domain();
-            $domain->create($name,$path);
-        $mysql=new MySql();
-            $mysql->create($name);
-*/
-            return $path;
+            var_dump($path);
+        print_r('<hr>');
+        return $path;
+    }
+
+    public function sysInformation(){
+        $response = $this->cPane->uapi->ServerInformation->get_information();
+
+        return $response;
     }
 }
 
