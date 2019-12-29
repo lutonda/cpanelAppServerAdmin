@@ -37,6 +37,11 @@ class Application{
             $path=$ftp->create($name);
             var_dump($path);
         print_r('<hr>');
+
+        $domain=new Domain();
+            $domain=$domain->autossl($name);
+            var_dump($domain);
+        print_r('<hr>');
         return $path;
     }
 

@@ -15,7 +15,12 @@ class Domain extends Application implements IApplication {
 
         return $response;
     }
-    
+
+    public function autossl($subdomain){
+        $response = $this->cPane->uapi->SSL->set_autossl_excluded_domains(['domains'  =>   $subdomain.'.'.$this->rootdomain]);
+
+        return $response;
+    }
     public function update(){
 
     }
