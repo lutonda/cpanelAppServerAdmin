@@ -53,6 +53,8 @@ class Application{
     }
     public static function appVersion($source_app, $a, $v){
     
+        //$source_app=__DIR__.'/../../../';
+
         $file=Yaml::parse(file_get_contents($source_app . 'app/config/config.yml'));
         return $file['twig']['globals'][$v];
     }

@@ -19,7 +19,6 @@ class DefaultController extends Controller
         $source_app=__DIR__.'/../../..';//$this->getParameter('paths')['source_app'];
         $file=Yaml::parse(file_get_contents($source_app . '/app/config/config.yml'));
         
-        //$source_app=__DIR__.'/../../../';//$this->getParameter('paths')['source_app'];
         $source_app=$this->getParameter('paths')['source_app'];
 
         $sysInfo=(new App())->sysInformation();
@@ -27,7 +26,7 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'sysinfo'=>$sysInfo,
             'datas'=>$sysInfo->data,
-            'version'=>App::appVersion$source_app,'nova/app/','version'),
+            'version'=>App::appVersion($source_app,'nova/app/','version'),
             'build'=>App::appVersion($source_app,'nova/app/','build'),
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
