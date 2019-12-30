@@ -16,8 +16,8 @@ class DefaultController extends Controller
     {
 
         
-        $source_app=$this->getParameter('paths')['source_app'];
-        $file=Yaml::parse(file_get_contents($source_app . 'app/config/config.yml'));
+        $source_app=__DIR__.'/../../..';//$this->getParameter('paths')['source_app'];
+        $file=Yaml::parse(file_get_contents($source_app . '/app/config/config.yml'));
         
         $sysInfo=(new App())->sysInformation();
         // replace this example code with whatever you need
