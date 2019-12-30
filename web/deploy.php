@@ -21,6 +21,7 @@ $commands = array(
     'git submodule sync',
     'git submodule update',
     'git submodule status',
+    'composer install',
 );
 chdir("/home/novanet/apps/admin/");
 // exec commands
