@@ -5,7 +5,7 @@
  * Used for automatically deploying websites via GitHub
  * Based on: https://gist.github.com/oodavid/1809044
  */
-$key = '[SET_YOUR_RANDOM_KEY]';
+$key = '235698562135484512123';
 if ($_GET['key'] != $key){
     header('Location: ./');
     die();
@@ -22,7 +22,7 @@ $commands = array(
     'git submodule update',
     'git submodule status',
 );
-chdir("/home/[SET_PATCH_TO_PROJECT]/public_html");
+chdir("/home/novanet/apps/admin/");
 // exec commands
 $output = '';
 foreach($commands AS $command){
