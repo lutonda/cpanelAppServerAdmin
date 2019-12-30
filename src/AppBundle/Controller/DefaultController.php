@@ -26,8 +26,8 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'sysinfo'=>$sysInfo,
             'datas'=>$sysInfo->data,
-            'version'=>App::appVersion($source_app,'nova/app/','version'),
-            'build'=>App::appVersion($source_app,'nova/app/','build'),
+            'version'=>App::appVersion($source_app,'nova/app','version'),
+            'build'=>App::appVersion($source_app,'nova/app','build'),
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
