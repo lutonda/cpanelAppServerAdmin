@@ -81,6 +81,8 @@ class ApplicationController extends Controller
 
         return $this->render('application/show.html.twig', array(
             'application' => $application,
+            'version'=>App::appVersion($this,$application->getAppKey(),'version'),
+            'build'=>App::appVersion($this,$application->getAppKey(),'build'),
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Application;
 
+use Symfony\Component\Yaml\Yaml;
 
 
 class Application{
@@ -49,6 +50,13 @@ class Application{
         $response = $this->cPane->uapi->ServerInformation->get_information();
 
         return $response;
+    }
+    public static function appVersion($that, $a, $v){
+    
+        //$source_app=__DIR__.'/../../../';//$this->getParameter('paths')['source_app'];
+        $source_app=$this->getParameter('paths')['source_app'];
+        $file=Yaml::parse(file_get_contents($source_app . 'app/config/config.yml'));
+        return $file['twig']['globals'][$v];
     }
 }
 

@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     paths:
-      source_app: '/home/novanet/apps/nova/app/'
+      source_app: '/home/novanet/apps/'
 
 framework:
     #esi: ~
@@ -38,6 +38,7 @@ framework:
 twig:
     globals:
         version: '3.0.1'
+        build: '000000121'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     paths: ["%kernel.project_dir%/src/AppBundle/Views"]
