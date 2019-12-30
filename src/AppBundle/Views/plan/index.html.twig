@@ -26,12 +26,12 @@
         {% for plan in plans %}
             <tr>
                 <td>{{ plan.name }}</td>
-                <td>{{ plan.invoices }}</td>
-                <td>{{ plan.wareHouses }}</td>
-                <td>{{ plan.users }}</td>
-                <td>{{ plan.accounting }}</td>
-                <td>{{ plan.auditing }}</td>
-                <td>{{ plan.pos }}</td>
+                <td>{% if plan.invoices == 0 %} Unimited {% else %} {{ plan.invoices }} {% endif %}</td>
+                <td>{% if plan.wareHouses == 0 %} Unimited {% else %}  {{ plan.wareHouses }} {% endif %}</td>
+                <td>{% if plan.users == 0 %} Unimited {% else %}  {{ plan.users }}  {% endif %}</td>
+                <td>{% if plan.accounting == 0 %} <i class="fa fa-times"></i> {% else %}  <i class="fa fa-check"></i>  {% endif %}</td>
+                <td>{% if plan.auditing == 0 %} <i class="fa fa-times"></i> {% else %}  <i class="fa fa-check"></i>  {% endif %}</td>
+                <td>{% if plan.pos == 0 %} <i class="fa fa-times"></i> {% else %}  <i class="fa fa-check"></i>  {% endif %}</td>
                 <td>
                     <ul>
                         <li>

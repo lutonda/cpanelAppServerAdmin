@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ application.name }}</td>
                 <td>{{ application.client.name }}</td>
-                <td>{% if application.isActive %}<button class="btn btn-xs btn-success"></button>{% else %}<button class="btn btn-xs btn-danger"></button>{% endif %}</td>
+                <td>{% if application.isActive %}<i class="fa fa-check" style="color: #0abb87"></i>{% else %}<i class="fa fa-times" style="color: #900"></i>{% endif %}</td>
                 <td>
                     <ul>
                         <li>
