@@ -6,7 +6,7 @@ use AppBundle\Application\Application as App;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Yaml\Yaml;
+
 class DefaultController extends Controller
 {
     /**
@@ -15,10 +15,6 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        
-        $source_app=__DIR__.'/../../..';//$this->getParameter('paths')['source_app'];
-        $file=Yaml::parse(file_get_contents($source_app . '/app/config/config.yml'));
-        
         $source_app=$this->getParameter('paths')['source_app'];
 
         $sysInfo=(new App())->sysInformation();
