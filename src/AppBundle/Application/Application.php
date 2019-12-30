@@ -55,7 +55,7 @@ class Application{
     
         //$source_app=__DIR__.'/../../../';
 
-        $file=Yaml::parse(file_get_contents($source_app . 'app/config/config.yml'));
+        $file=Yaml::parse(file_get_contents($source_app. $a . '/app/config/config.yml'));
         return $file['twig']['globals'][$v];
     }
 }
