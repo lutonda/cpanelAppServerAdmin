@@ -67,6 +67,7 @@ class Application{
     public static function currentVersion($name){
         chdir("/home/novanet/apps/".$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
+        // -latest git tag | sort -n | tail -1
         $tagVersion = trim(exec('git describe --tags'));
         $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
         $commitDate->setTimezone(new \DateTimeZone('UTC'));
