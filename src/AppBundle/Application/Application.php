@@ -67,11 +67,11 @@ class Application{
     public static function currentVersion($name){
         chdir("/home/novanet/apps/".$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
-
+        $tagVersion = trim(exec('git tag | sort -V | tail -1'));
         $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
         $commitDate->setTimezone(new \DateTimeZone('UTC'));
 
-        return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
+        return sprintf('v%s-dev.%s (%s)', $tagVersion, $commitHash, $commitDate->format('Y-m-d His'));
     }
 
     
