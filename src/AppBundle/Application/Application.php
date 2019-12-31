@@ -108,7 +108,6 @@ class Application{
             $a->result=trim($tmp);
             $output []= $a;
         }
-
          return $output;
     }
 }
