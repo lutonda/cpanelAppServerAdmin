@@ -23,6 +23,7 @@ $commands = array(
     'git submodule status',
     'composer install',
 );
+
 chdir("/home/novanet/apps/admin/");
 // exec commands
 $output = '';
