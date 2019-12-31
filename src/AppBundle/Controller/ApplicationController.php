@@ -80,10 +80,16 @@ class ApplicationController extends Controller
         $deleteForm = $this->createDeleteForm($application);
 
         $source_app=$this->getParameter('paths')['source_app'];
+
+
+
+        $v=App::currentVersion($application->getAppKey());
+        var_dump($v);
         return $this->render('application/show.html.twig', array(
             'application' => $application,
             'version'=>App::appVersion($source_app,$application->getAppKey(),'version'),
             'build'=>App::appVersion($source_app,$application->getAppKey(),'build'),
+            'rootVersion'=>App::appVersion($source_app,'nova/app','version').'-'.App::appVersion($source_app,'nova/app','build'),
             'delete_form' => $deleteForm->createView(),
         ));
     }
