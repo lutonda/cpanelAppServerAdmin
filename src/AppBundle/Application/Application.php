@@ -89,10 +89,12 @@ class Application{
             'whoami',
             'git checkout -- .',
             'git pull',
+            'git fetch --tags',
             'git status',
             'git submodule sync',
             'git submodule update',
             'git submodule status',
+            'composer install',
             'rm -rf var/',
         );
 

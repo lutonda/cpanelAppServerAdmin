@@ -40,7 +40,6 @@ class DefaultController extends Controller
      * @Route("/sys/upgrade")
      */
     public function sysUpgradeAction(){
-        var_dump('asdasd');
-        return new Response(json_encode('asdasd'));
+        return new Response(json_encode(App::upgrade()));
     }
 }
