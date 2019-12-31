@@ -65,8 +65,8 @@ class Application{
 
 
     public static function currentVersion($name){
-        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        //chdir("/home/novanet/apps/".$name);
+        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        chdir("/home/novanet/apps/".$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
         $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
@@ -78,21 +78,21 @@ class Application{
     }
 
     public static function lastesVersion($name){
-        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        //chdir("/home/novanet/apps/".$name);
+        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        chdir("/home/novanet/apps/".$name);
         $lastes = trim(exec('git tag | sort -n | tail -1'));
 
         return $lastes;
     }
 
-    public static function upgrade($version=''){
+    public static function upgrade($name='admin'){
         $commands = array(
             'echo $PWD',
             'whoami',
             'git checkout -- .',
             'git pull',
             'git fetch --tags',
-            $version=='' ? '' : 'git checkout tags/'.$version ,
+            'git checkout $(git describe --tags)',
             'git status',
             'git submodule sync',
             'git submodule update',
@@ -101,7 +101,7 @@ class Application{
             'rm -rf var/',
         );
 
-        chdir("./");
+        chdir("/home/novanet/apps/".$name);
         // exec commands
         $output = [];
         foreach($commands AS $command){

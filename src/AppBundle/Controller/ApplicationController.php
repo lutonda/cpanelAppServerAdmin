@@ -103,7 +103,7 @@ class ApplicationController extends Controller
 
         $version=App::currentVersion($application->getAppKey());
         $rootVersion=App::lastesVersion($application->getAppKey());
-        App::upgrade($version!=$rootVersion ? $rootVersion : '');
+        App::upgrade($application->getAppKey());
 
         return $this->redirect($this->generateUrl('application_show',['id'=>$application->getId(),'upgraded'=>$version]));
     }
