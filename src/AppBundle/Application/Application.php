@@ -55,17 +55,18 @@ class Application{
     
         //$source_app=__DIR__.'/../../../';
 
-        $file=Yaml::parse(file_get_contents($source_app. $a . '/app/config/config.yml'));
-        return $file['twig']['globals'][$v];
+        //$file=Yaml::parse(file_get_contents($source_app. $a . '/app/config/config.yml'));
+        return 30;//$file['twig']['globals'][$v];
     }
 
     const MAJOR = 1;
     const MINOR = 2;
     const PATCH = 3;
-    
+
 
     public static function currentVersion($name){
-        chdir("/home/novanet/apps/".$name);
+        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        //chdir("/home/novanet/apps/".$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
         $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
@@ -77,13 +78,14 @@ class Application{
     }
 
     public static function lastesVersion($name){
-        chdir("/home/novanet/apps/".$name);
+        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        //chdir("/home/novanet/apps/".$name);
         $lastes = trim(exec('git tag | sort -n | tail -1'));
 
         return $lastes;
     }
 
-    public static function upgrade(){
+    public static function upgrade($version=''){
         $commands = array(
             'echo $PWD',
             'whoami',
@@ -95,6 +97,7 @@ class Application{
             'git submodule update',
             'git submodule status',
             'composer install',
+            $version=='' ? '' : 'git checkout tags/'.$version ,
             'rm -rf var/',
         );
 

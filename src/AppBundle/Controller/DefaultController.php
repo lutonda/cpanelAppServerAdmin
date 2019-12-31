@@ -42,5 +42,6 @@ class DefaultController extends Controller
      */
     public function sysUpgradeAction(){
         return new Response(json_encode(App::upgrade()),200,['Content-Type'=>' application/json']);
+
     }
 }

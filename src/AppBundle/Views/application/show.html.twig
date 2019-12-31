@@ -24,9 +24,11 @@
 </div>
 <div class="row">
     <div class="col-md-3">Version</div>
-    <div class="col-md-9"><h4>{{ version }}</h4> | build {{ build }} 
-    
-    <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#upgrade"> <i class="fa fa-exclamation-triangle fa-1x"></i> Update Avaliable</button></div>
+    <div class="col-md-9"><h4>{{ version }}</h4>
+    {% if rootVersion==version %}
+    <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#upgrade"> <i class="fa fa-exclamation-triangle fa-1x"></i> Update Avaliable</button>
+    {% endif %}
+    </div>
 </div>
 <div class="row">
     <div class="col-md-3">Client</div>
@@ -66,7 +68,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update to 3.0.1 Dez 2019</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update to {{ rootVersion }} Dez 2019</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -86,8 +88,8 @@
             </ul>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ignore</button>
+        <a href="{{ path('application_upgrade',{id:application.id}) }}" type="button" class="btn btn-primary">Upgrade</a>
       </div>
     </div>
   </div>

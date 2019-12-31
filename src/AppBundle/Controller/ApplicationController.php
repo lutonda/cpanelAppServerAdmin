@@ -81,19 +81,29 @@ class ApplicationController extends Controller
 
         $source_app=$this->getParameter('paths')['source_app'];
 
-
-
-        $v=App::currentVersion($application->getAppKey());
-        $x=App::lastesVersion($application->getAppKey());
-        var_dump($v);
-        var_dump($x);
         return $this->render('application/show.html.twig', array(
             'application' => $application,
-            'version'=>App::appVersion($source_app,$application->getAppKey(),'version'),
-            'build'=>App::appVersion($source_app,$application->getAppKey(),'build'),
-            'rootVersion'=>App::appVersion($source_app,'nova/app','version').'-'.App::appVersion($source_app,'nova/app','build'),
+            'version'=>App::currentVersion($application->getAppKey()),
+            'rootVersion'=>App::lastesVersion($application->getAppKey()),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Finds and displays a application entity.
+     *
+     * @Route("/upgrade/{id}", name="application_upgrade")
+     * @Method("GET")
+     */
+    public function upgradeAction(Application $application)
+    {
+        $deleteForm = $this->createDeleteForm($application);
+
+        $source_app=$this->getParameter('paths')['source_app'];
+        $version=App::lastesVersion($application->getAppKey());
+        App::upgrade($version);
+
+        return $this->redirect($this->generateUrl('payment_show',['id'=>$application->getId(),'upgraded'=>$version]));
     }
 
     /**
