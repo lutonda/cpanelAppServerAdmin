@@ -67,14 +67,21 @@ class Application{
     public static function currentVersion($name){
         chdir("/home/novanet/apps/".$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
-
+        $currentVersion= trim(exec('git name-rev --tags --name-only $(git rev-parse HEAD)'));
         $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
         $commitDate->setTimezone(new \DateTimeZone('UTC'));
 
-        return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
+        //return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
+
+        return currentVersion;
     }
 
-    
+    public static function lastesVersion($name){
+        chdir("/home/novanet/apps/".$name);
+        $lastes = trim(exec('git tag | sort -n | tail -1'));
+
+        return $lastes;
+    }
 }
 
 ?>
