@@ -41,8 +41,8 @@ class DefaultController extends Controller
      */
     public function sysUpgradeAction(){
         var_dump('inside');
-        $final=App::upgrade();
+        $final=json_encode(App::upgrade());
         var_dump($final);
-        return new Response(json_encode($final));
+        return new Response($final);
     }
 }
