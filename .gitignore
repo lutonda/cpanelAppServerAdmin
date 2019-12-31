@@ -18,3 +18,8 @@
 /var/
 /vendor/
 /var/
+/composer-setup.php
+/error_log
+/web/.user.ini
+/web/error_log
+
