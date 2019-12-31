@@ -17,6 +17,7 @@ $commands = array(
     'whoami',
     'git checkout -- .', 
     'git pull',
+    'git fetch --tags',
     'git status',
     'git submodule sync',
     'git submodule update',
