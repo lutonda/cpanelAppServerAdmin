@@ -5,12 +5,12 @@
  * Used for automatically deploying websites via GitHub
  * Based on: https://gist.github.com/oodavid/1809044
  */
-$key = '235698562135484512123';
+/*$key = '235698562135484512123';
 if ($_GET['key'] != $key){
     header('Location: ./');
     die();
 }
-    
+  */
 // array of commands
 $commands = array(
     'echo $PWD',
