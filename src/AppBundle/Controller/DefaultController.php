@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Application\Application as App;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
@@ -34,5 +35,11 @@ class DefaultController extends Controller
      */
     public function logoutAction(){
         throw new \RuntimeException("logout");
+    }
+    /**
+     * @Route("/sys/upgrade")
+     */
+    public function sysUpgradeAction(){
+        return new Response(json_encode(App::upgrade()));
     }
 }

@@ -82,6 +82,34 @@ class Application{
 
         return $lastes;
     }
+
+    public static function upgrade(){
+        $commands = array(
+            'echo $PWD',
+            'whoami',
+            'git checkout -- .',
+            'git pull',
+            'git fetch --tags',
+            'git status',
+            'git submodule sync',
+            'git submodule update',
+            'git submodule status',
+            'composer install',
+            'rm -rf var/',
+        );
+
+        chdir("/home/novanet/apps/admin/");
+        // exec commands
+        $output = [];
+        foreach($commands AS $command){
+            $tmp = shell_exec($command);
+
+            //$output []= "<span style=\"color: #6BE234;\">\$</span><span style=\"color: #729FCF;\">{$command}\n</span><br />";
+            $output []= htmlentities(trim($tmp));
+        }
+
+         return $output;
+    }
 }
 
 ?>
