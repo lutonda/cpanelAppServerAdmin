@@ -84,7 +84,9 @@ class ApplicationController extends Controller
 
 
         $v=App::currentVersion($application->getAppKey());
+        $x=App::lastesVersion($application->getAppKey());
         var_dump($v);
+        var_dump($x);
         return $this->render('application/show.html.twig', array(
             'application' => $application,
             'version'=>App::appVersion($source_app,$application->getAppKey(),'version'),
