@@ -22,6 +22,7 @@ $commands = array(
     'git submodule update',
     'git submodule status',
     'composer install',
+    'rm -rf var/',
 );
 
 chdir("/home/novanet/apps/admin/");
