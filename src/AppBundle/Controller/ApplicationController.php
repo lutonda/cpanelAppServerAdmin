@@ -100,8 +100,10 @@ class ApplicationController extends Controller
         $deleteForm = $this->createDeleteForm($application);
 
         $source_app=$this->getParameter('paths')['source_app'];
-        $version=App::lastesVersion($application->getAppKey());
-        App::upgrade($version);
+
+        $version=App::currentVersion($application->getAppKey());
+        $rootVersion=App::lastesVersion($application->getAppKey());
+        App::upgrade($version!=$rootVersion ? $rootVersion : '');
 
         return $this->redirect($this->generateUrl('payment_show',['id'=>$application->getId(),'upgraded'=>$version]));
     }

@@ -92,12 +92,12 @@ class Application{
             'git checkout -- .',
             'git pull',
             'git fetch --tags',
+            $version=='' ? '' : 'git checkout tags/'.$version ,
             'git status',
             'git submodule sync',
             'git submodule update',
             'git submodule status',
             'composer install',
-            $version=='' ? '' : 'git checkout tags/'.$version ,
             'rm -rf var/',
         );
 
