@@ -3,19 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f48043b5-6f44-4e25-bdf7-45b6d89b6c5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/a/app.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/a/app_dev.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/a/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/a/config.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/a/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/a/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/b/a/app.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/b/a/app_dev.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/b/a/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/b/a/config.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/b/a/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/b/a/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/script/deploy.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/deploy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Application/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Application/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +131,7 @@
       <updated>1577384419187</updated>
       <workItem from="1577384420731" duration="66549000" />
       <workItem from="1577730794681" duration="103000" />
-      <workItem from="1577735184836" duration="6850000" />
+      <workItem from="1577735184836" duration="8259000" />
     </task>
     <task id="LOCAL-00001" summary="more config">
       <created>1577515213883</created>
@@ -318,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577805787230</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="sys upgrade from controller know path">
+      <created>1577806257474</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1577806257475</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,10 +347,10 @@
       <screen x="0" y="24" width="1920" height="1003" />
     </state>
     <state x="693" y="283" width="524" height="482" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.24.1920.1003@0.24.1920.1003" timestamp="1577516796648" />
-    <state x="515" y="118" width="880" height="812" key="CommitChangelistDialog2" timestamp="1577805787122">
+    <state x="515" y="118" width="880" height="812" key="CommitChangelistDialog2" timestamp="1577806257371">
       <screen x="0" y="24" width="1920" height="1003" />
     </state>
-    <state x="515" y="118" width="880" height="812" key="CommitChangelistDialog2/0.24.1920.1003@0.24.1920.1003" timestamp="1577805787122" />
+    <state x="515" y="118" width="880" height="812" key="CommitChangelistDialog2/0.24.1920.1003@0.24.1920.1003" timestamp="1577806257371" />
     <state x="743" y="283" width="424" height="482" key="FileChooserDialogImpl" timestamp="1577384688645">
       <screen x="0" y="24" width="1920" height="1003" />
     </state>
@@ -422,10 +419,10 @@
       <screen x="0" y="24" width="1920" height="1003" />
     </state>
     <state x="449" y="160" key="SettingsEditor/0.24.1920.1003@0.24.1920.1003" timestamp="1577388488136" />
-    <state x="555" y="261" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1577805791567">
+    <state x="555" y="261" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1577806259304">
       <screen x="0" y="24" width="1920" height="1003" />
     </state>
-    <state x="555" y="261" width="800" height="526" key="Vcs.Push.Dialog.v2/0.24.1920.1003@0.24.1920.1003" timestamp="1577805791567" />
+    <state x="555" y="261" width="800" height="526" key="Vcs.Push.Dialog.v2/0.24.1920.1003@0.24.1920.1003" timestamp="1577806259304" />
     <state x="732" y="445" width="455" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577803722145">
       <screen x="0" y="24" width="1920" height="1003" />
     </state>
@@ -459,7 +456,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php</url>
-          <line>20</line>
+          <line>21</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

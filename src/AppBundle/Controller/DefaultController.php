@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Application\Application as App;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -40,9 +41,6 @@ class DefaultController extends Controller
      * @Route("/sys/upgrade")
      */
     public function sysUpgradeAction(){
-        var_dump('inside');
-        $final=json_encode(App::upgrade());
-        var_dump($final);
-        return new Response($final);
+        return new Response(json_encode(App::upgrade()),200,['Content-Type'=>' application/json']);
     }
 }

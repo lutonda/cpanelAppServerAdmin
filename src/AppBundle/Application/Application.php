@@ -98,14 +98,15 @@ class Application{
             'rm -rf var/',
         );
 
-        chdir("/home/novanet/apps/admin/");
+        chdir("./");
         // exec commands
         $output = [];
         foreach($commands AS $command){
             $tmp = shell_exec($command);
-
-            //$output []= "<span style=\"color: #6BE234;\">\$</span><span style=\"color: #729FCF;\">{$command}\n</span><br />";
-            $output []= trim($tmp);
+            $a=new \stdClass();
+            $a->command=$command;
+            $a->result=trim($tmp);
+            $output []= $a;
         }
 
          return $output;
