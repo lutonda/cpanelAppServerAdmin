@@ -74,7 +74,7 @@ class Application{
         return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
     }
 
-    }
+    
 }
 
 ?>
