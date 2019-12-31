@@ -22,4 +22,4 @@
 /error_log
 /web/.user.ini
 /web/error_log
-
+/web/php.ini
