@@ -15,7 +15,27 @@ class FTP extends Application implements IApplication{
     public function create($name){
 
         try {
-            var_dump('creeating path: '.$this->path .  $name);
+
+            var_dump('Entering path: /home/novanet/apps/ ');
+            chdir("/home/novanet/apps/");
+
+            var_dump('Cloning repo to path: /home/novanet/apps/'.$name);
+            $outputs = trim(exec('git clone git@gitlab.com:lutonda/nova_erp.git '.$name));
+            var_dump($outputs);
+
+            var_dump('Entering path: /home/novanet/apps/'.$name);
+            chdir("/home/novanet/apps/".$name);
+
+            var_dump('checkout $(git describe --tags)');
+            $outputs = trim(exec('git checkout $(git describe --tags)'));
+            var_dump($outputs);
+
+            var_dump('Installing packages');
+            $outputs = trim(exec('composer install'));
+            var_dump($outputs);
+            $outputs = trim(exec('git describe --abbrev=0 --tags'));
+            var_dump($outputs);
+            /*var_dump('creeating path: '.$this->path .  $name);
             if (!file_exists($this->path  . $name))
                 mkdir($this->path .  $name, 0700,true);
 
@@ -25,6 +45,7 @@ class FTP extends Application implements IApplication{
             mkdir($this->path .  $name . '/web', 0700);
 
             exec('cp -r '.$this->path . 'nova/app/. '.$this->path .  $name . '/');
+            */
         }catch (Exception $e) {
             var_dump($e->getMessage());
         }

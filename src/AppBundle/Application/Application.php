@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Application;
 
+use DateTime;
 use Symfony\Component\Yaml\Yaml;
 
 
@@ -24,6 +25,10 @@ class Application{
     public static function build($name){
 
 
+        $ftp=new FTP();
+            $path=$ftp->create($name);
+            var_dump($path);
+            print_r('<hr>');
         $domain=new Domain();
             $domain=$domain->create($name);
             var_dump($domain);
@@ -33,10 +38,6 @@ class Application{
             $mysql=$mysql->create($name);
             var_dump($mysql);
 
-        print_r('<hr>');
-        $ftp=new FTP();
-            $path=$ftp->create($name);
-            var_dump($path);
         print_r('<hr>');
 
         $domain=new Domain();
@@ -64,12 +65,12 @@ class Application{
     const PATCH = 3;
 
 
-    public static function currentVersion($name){
-        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        chdir("/home/novanet/apps/".$name);
+    public static function currentVersion($name='admin'){
+        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        //chdir("/home/novanet/apps/".$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
-        $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
+        $commitDate = new DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
         $commitDate->setTimezone(new \DateTimeZone('UTC'));
 
         ///return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
@@ -78,8 +79,10 @@ class Application{
     }
 
     public static function lastesVersion($name){
-        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        chdir("/home/novanet/apps/".$name);
+        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        //chdir("/home/novanet/apps/".$name);
+
+        exec('git fetch --tags');
         $lastes = trim(exec('git tag | sort -n | tail -1'));
 
         return $lastes;
