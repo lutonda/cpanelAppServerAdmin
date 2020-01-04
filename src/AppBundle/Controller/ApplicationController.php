@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Application\FileUploader;
 use AppBundle\Entity\Application;
 use AppBundle\Application\Application as App;
 use AppBundle\Entity\Client;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -87,6 +89,21 @@ class ApplicationController extends Controller
             'rootVersion'=>App::lastesVersion($application->getAppKey()),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Finds and displays a application entity.
+     *
+     * @Route("/{id}/logo/upload", name="application_logo_upload")
+     * @Method("POST")
+     */
+    public function logoUploadAction(Application $application, Request $request, FileUploader $uploader, LoggerInterface $logger)
+    {
+
+        $file=$request->files->get('image');
+        $uploader->upload($application->getPath().'/img/logo', $file, 'logo.png');
+
+        return $this->redirect($this->generateUrl('application_show',['id'=>$application->getId()]));
     }
 
     /**

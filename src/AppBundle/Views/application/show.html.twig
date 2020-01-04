@@ -6,53 +6,66 @@
     <div class="col-md-3">ID</div>
     <div class="col-md-9">{{ application.id }}</div>
 </div>
-<div class="row">
-    <div class="col-md-3">key</div>
-    <div class="col-md-9">{{ application.appKey }}</div>
-</div>
-<div class="row">
-    <div class="col-md-3">Name</div>
-    <div class="col-md-9">{{ application.name }}</div>
-</div>
-<div class="row">
-    <div class="col-md-3">Domain</div>
-    <div class="col-md-9">{{ application.domain }} <a href="https://{{ application.domain }}" target="_blank"><i class="fa fa-external-link"></i></a> </div>
-</div>
-<div class="row">
-    <div class="col-md-3">Path</div>
-    <div class="col-md-9">{{ application.path }}</div>
-</div>
-<div class="row">
-    <div class="col-md-3">Version</div>
-    <div class="col-md-9"><h4>{{ version }}</h4>
-    {% if rootVersion!=version %}
-    <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#upgrade"> <i class="fa fa-exclamation-triangle fa-1x"></i> Update Avaliable</button>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-3">key</div>
+                <div class="col-md-9">{{ application.appKey }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Name</div>
+                <div class="col-md-9">{{ application.name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Domain</div>
+                <div class="col-md-9">{{ application.domain }} <a href="https://{{ application.domain }}" target="_blank"><i class="fa fa-external-link"></i></a> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Path</div>
+                <div class="col-md-9">{{ application.path }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Version</div>
+                <div class="col-md-9"><h4>{{ version }}</h4>
+                    {% if rootVersion!=version %}
+                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#upgrade"> <i class="fa fa-exclamation-triangle fa-1x"></i> Update Avaliable</button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Client</div>
+                <div class="col-md-9">{{ application.client.name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Payments</div>
+                <div class="col-md-6">
+                    <table class="bordered">
+                        <tbody>
+                        {% for payment in application.payments %}
+                            <tr>
+                                <th>{{ payment.plan.name }}</th>
+                                <td>{{ payment.months }}  Months</td>
+                                <td>
+                                    {% if payment.dueDate>'now'|date  %}<button class="btn btn-sm btn-success">ok</button>{% endif %}
+                                    {% if payment.dueDate is null  %}{% else %}{{ payment.dueDate|date('Y-m-d') }}{% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="https://{{ application.domain }}/img/logo/logo.png" style="width: 100%;border-radius: 5px;box-shadow: 0 0 100px;background: #FFF">
+            <form method="POST" action="{{ path('application_logo_upload',{id:application.id}) }}" id="formImage" enctype="multipart/form-data">
+                <input id="image" name="image" type="file" accept=".png" style="display: none" />
+                <label for="image" class="btn btn-default" style="margin-top: -50px;"><i class="fa fa-camera fa-2x"></i></label>
+            </form>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-3">Client</div>
-    <div class="col-md-9">{{ application.client.name }}</div>
-</div>
-<div class="row">
-    <div class="col-md-3">Payments</div>
-    <div class="col-md-6">
-        <table class="bordered">
-            <tbody>
-            {% for payment in application.payments %}
-            <tr>
-                <th>{{ payment.plan.name }}</th>
-                <td>{{ payment.months }}  Months</td>
-                <td>
-                    {% if payment.dueDate>'now'|date  %}<button class="btn btn-sm btn-success">ok</button>{% endif %}
-                    {% if payment.dueDate is null  %}{% else %}{{ payment.dueDate|date('Y-m-d') }}{% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
+
 <hr/>
     {{ form_start(delete_form) }}
         <div class="btn-group" role="group" aria-label="Basic example">
@@ -94,4 +107,13 @@
     </div>
   </div>
 </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function(e){
+            $('#image').on('change',function (e) {
+                $('#formImage').submit();
+            })
+        })
+    </script>
 {% endblock %}
