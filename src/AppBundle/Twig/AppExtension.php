@@ -16,11 +16,11 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function appVersion()
+    public function appVersion($name)
     {
 
-        $version = App::currentVersion();
+        $version = App::currentVersion($name);
 
-        return $version;
+        return $version->version;
     }
 }

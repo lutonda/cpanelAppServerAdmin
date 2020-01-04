@@ -52,13 +52,6 @@ class Application{
 
         return $response;
     }
-    public static function appVersion($source_app, $a, $v){
-    
-        //$source_app=__DIR__.'/../../../';
-
-        //$file=Yaml::parse(file_get_contents($source_app. $a . '/app/config/config.yml'));
-        return 30;//$file['twig']['globals'][$v];
-    }
 
     const MAJOR = 1;
     const MINOR = 2;
@@ -66,26 +59,36 @@ class Application{
 
 
     public static function currentVersion($name='admin'){
-        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        //chdir("/home/novanet/apps/".$name);
+
+        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        chdir((new Application())->path.$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
         $commitDate = new DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
         $commitDate->setTimezone(new \DateTimeZone('UTC'));
 
         ///return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
-
-        return $currentVersion;
+        $v=new \stdClass();
+        $v->version=explode('-',$currentVersion)[0];
+        $v->build=explode('-',$currentVersion)[1];
+        $v->date=$commitDate;
+        return $v;
     }
 
-    public static function lastesVersion($name){
-        chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        //chdir("/home/novanet/apps/".$name);
+    public static function lastesVersion(){
+        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+        chdir((new Application())->path."demo");
 
         exec('git fetch --tags');
-        $lastes = trim(exec('git tag | sort -n | tail -1'));
+        $version = trim(exec('git tag | sort -n | tail -1'));
+        $commitDate=exec('git log -1 --format=%ai $(git describe --tags)');
 
-        return $lastes;
+        $v=new \stdClass();
+        $v->version=explode('-',$version)[0];
+        $v->build=explode('-',$version)[1];
+        $v->date=$commitDate;
+        return $v;
+
     }
 
     public static function upgrade($name='admin'){
@@ -104,7 +107,7 @@ class Application{
             'rm -rf var/',
         );
 
-        chdir("/home/novanet/apps/".$name);
+        chdir((new Application())->path.$name);
         // exec commands
         $output = [];
         foreach($commands AS $command){

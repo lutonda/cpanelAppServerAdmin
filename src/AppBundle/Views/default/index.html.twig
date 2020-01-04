@@ -65,8 +65,8 @@
 								<div class="kt-widget17__visual kt-widget17__visual--chart kt-portlet-fit--top kt-portlet-fit--sides" style="background-color: #014401">
 									<div class="kt-widget17__chart" style="height:320px; text-align:center">
                                     <h3>Version</h3>
-										<h1 style="font-size:104px">{{version}}</h1>
-                                        Build: <h4>{{build}}</h4>
+										<h1 style="font-size:104px">{{version.version}}</h1>
+                                        Build: <h4>{{version.build}} of {{version.date|date('M Y')}}</h4>
 									</div>
 								</div>
                                 {% set m1 = datas|first %}

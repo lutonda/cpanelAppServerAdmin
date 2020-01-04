@@ -26,8 +26,8 @@
             </div>
             <div class="row">
                 <div class="col-md-3">Version</div>
-                <div class="col-md-9"><h4>{{ version }}</h4>
-                    {% if rootVersion!=version %}
+                <div class="col-md-9"><h4>{{ version.version }}-{{ version.build }} {{ version.date|date('M Y') }}</h4>
+                    {% if rootVersion.date|date('YmdHis')!=version.date|date('YmdHis') %}
                         <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#upgrade"> <i class="fa fa-exclamation-triangle fa-1x"></i> Update Avaliable</button>
                     {% endif %}
                 </div>
@@ -81,7 +81,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update to {{ rootVersion }} Dez 2019</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update to {{ rootVersion.version }}-{{ rootVersion.build }} {{ rootVersion.date|date('M d Y') }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
