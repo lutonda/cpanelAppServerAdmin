@@ -16,25 +16,26 @@ class FTP extends Application implements IApplication{
 
         try {
 
-            var_dump('Entering path: /home/novanet/apps/ ');
+            var_dump('Entering path: /home/novanet/apps/ <hr/>');
             chdir("/home/novanet/apps/");
 
-            var_dump('Cloning repo to path: /home/novanet/apps/'.$name);
+            var_dump('Cloning repo to path: /home/novanet/apps/'.$name.'<hr/>');
             $outputs = trim(exec('git clone git@gitlab.com:lutonda/nova_erp.git '.$name));
-            var_dump($outputs);
+            var_dump($outputs.'<hr/>');
 
-            var_dump('Entering path: /home/novanet/apps/'.$name);
+            var_dump('Entering path: /home/novanet/apps/'.$name.'<hr/>');
             chdir("/home/novanet/apps/".$name);
 
-            var_dump('checkout $(git describe --tags)');
-            $outputs = trim(exec('git checkout $(git describe --tags)'));
-            var_dump($outputs);
+            var_dump('checkout $(git describe --tags)<hr/>');
+            var_dump('checkout $(git tag | sort -n | tail -1)<hr/>');
+            $outputs = trim(exec('git checkout $(git tag | sort -n | tail -1)'));
+            var_dump($outputs.'<hr/>');
 
-            var_dump('Installing packages');
+            var_dump('Installing packages<hr/>');
             $outputs = trim(exec('composer install'));
-            var_dump($outputs);
+            var_dump($outputs.'<hr/>');
             $outputs = trim(exec('git describe --abbrev=0 --tags'));
-            var_dump($outputs);
+            var_dump($outputs.'<hr/>');
             /*var_dump('creeating path: '.$this->path .  $name);
             if (!file_exists($this->path  . $name))
                 mkdir($this->path .  $name, 0700,true);

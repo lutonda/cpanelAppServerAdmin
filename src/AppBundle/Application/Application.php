@@ -98,12 +98,12 @@ class Application{
             'git checkout -- .',
             'git pull',
             'git fetch --tags',
-            'git checkout $(git describe --tags)',
+            'git checkout $(git tag | sort -n | tail -1)',
             'git status',
             'git submodule sync',
             'git submodule update',
             'git submodule status',
-            'composer install',
+            'composer install --prefer-source',
             'rm -rf var/',
         );
 
