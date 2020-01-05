@@ -44,6 +44,10 @@ class Application{
             $domain=$domain->autossl($name);
             var_dump($domain);
         print_r('<hr>');
+
+        $path=$ftp->createStach($name);
+            var_dump($path);
+        print_r('<hr>');
         return $path;
     }
 
