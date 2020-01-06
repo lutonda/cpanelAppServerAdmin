@@ -109,6 +109,7 @@ class Application{
             'git submodule update',
             'git submodule status',
             'composer install --prefer-source',
+            'php bin/console doctrine:schema:update --force',
             'rm -rf var/',
         );
 
