@@ -26,8 +26,8 @@
             </div>
             <div class="row">
                 <div class="col-md-3">Version</div>
-                <div class="col-md-9"><h4>{{ version.version }}-{{ version.build }} {{ version.date|date('M Y') }}</h4>
-                    {% if rootVersion.date|date('YmdHis')!=version.date|date('YmdHis') %}
+                <div class="col-md-9"><h4>{{ version.version }}-{{ version.build }} {{ version.date|date('M, d Y') }}</h4>
+                    {% if version.version~version.build != rootVersion.version~rootVersion.build %}
                         <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#upgrade"> <i class="fa fa-exclamation-triangle fa-1x"></i> Update Avaliable</button>
                     {% endif %}
                 </div>
