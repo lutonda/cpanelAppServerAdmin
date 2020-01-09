@@ -30,6 +30,7 @@ class FTP extends Application implements IApplication{
             var_dump('checkout $(git tag | sort -n | tail -1)<hr/>');
             $outputs = trim(exec('git checkout $(git tag | sort -n | tail -1)'));
             var_dump($outputs.'<hr/>');
+            var_dump(exec('rm web/img/demo_template.png'));
 
         }catch (Exception $e) {
             var_dump($e->getMessage());
