@@ -99,9 +99,7 @@ class Application{
         $commands = array(
             'echo $PWD',
             'whoami',
-            'git resert --hard',
-            'git checkout -- .',
-            'git pull',
+            'git reset --hard',
             'git fetch --tags',
             'git checkout $(git tag | sort -n | tail -1)',
             'git status',
