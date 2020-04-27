@@ -64,6 +64,8 @@ class Application{
 
     public static function currentVersion($name='admin'){
 
+        try{
+            
         //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
         chdir((new Application())->path.$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
@@ -76,10 +78,19 @@ class Application{
         $v->version=explode('-',$currentVersion)[0];
         $v->build=explode('-',$currentVersion)[1];
         $v->date=$commitDate;
+        }catch(\Exception $e){
+            
+            $v=new \stdClass();
+            $v->version='';
+            $v->build='';
+            $v->date='';
+        }
         return $v;
     }
 
     public static function lastesVersion(){
+
+        try{
         //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
         chdir((new Application())->path."demo");
 
@@ -91,6 +102,15 @@ class Application{
         $v->version=explode('-',$version)[0];
         $v->build=explode('-',$version)[1];
         $v->date=$commitDate;
+
+        
+        }catch(\Exception $e){
+            
+            $v=new \stdClass();
+            $v->version='';
+            $v->build='';
+            $v->date='';
+        }
         return $v;
 
     }

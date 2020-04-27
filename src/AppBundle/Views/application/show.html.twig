@@ -45,9 +45,9 @@
                             <tr>
                                 <th>{{ payment.plan.name }}</th>
                                 <td>{{ payment.months }}  Months</td>
-                                <td>
-                                    {% if payment.dueDate>'now'|date  %}<button class="btn btn-sm btn-success">ok</button>{% endif %}
-                                    {% if payment.dueDate is null  %}{% else %}{{ payment.dueDate|date('Y-m-d') }}{% endif %}
+                                <td class="btn btn-{% if payment.dueDate>'now'|date  %}success{% else %}danger{% endif %}" title="since {{payment.date|date('Y-m-d H:i:s')}}">
+                                    <i class="fa fa-{% if payment.dueDate>'now'|date  %}check{% else %}times{% endif %}"></i>
+                                    {{ payment.dueDate|date('Y-m-d') }}
                                 </td>
                             </tr>
                         {% endfor %}
