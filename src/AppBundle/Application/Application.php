@@ -106,8 +106,8 @@ class Application{
             'git submodule sync',
             'git submodule update',
             'git submodule status',
-            'php bin/console doctrine:schema:update --force',
             'rm -rf var/',
+            'php bin/console doctrine:schema:update --force',
         );
 
         chdir((new Application())->path.$name);
