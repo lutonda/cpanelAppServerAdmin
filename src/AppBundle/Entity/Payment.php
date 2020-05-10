@@ -203,6 +203,11 @@ class Payment
      */
     public function getDueDate()
     {
+        
+        $date=date_create(date_format($this->date, 'Y-m-d'));
+        date_add($date, date_interval_create_from_date_string($this->months.' months'));
+        $this->dueDate = $date;
+        
         return $this->dueDate;
     }
 

@@ -82,6 +82,7 @@ class ApplicationController extends Controller
         $deleteForm = $this->createDeleteForm($application);
 
         $source_app=$this->getParameter('paths')['source_app'];
+        
 
         return $this->render('application/show.html.twig', array(
             'application' => $application,
