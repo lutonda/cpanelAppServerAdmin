@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
+use AppBundle\Application\Application as App;
 
 /**
  * Payment
@@ -53,6 +54,13 @@ class Payment
      * @ORM\Column(name="due_date", type="datetime", nullable=true)
      */
     private $dueDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="license", type="string", nullable=true)
+     */
+    private $license;
 
     /**
      * @var float
@@ -203,19 +211,14 @@ class Payment
      */
     public function getDueDate()
     {
-        
-        $date=date_create(date_format($this->date, 'Y-m-d'));
-        date_add($date, date_interval_create_from_date_string($this->months.' months'));
-        $this->dueDate = $date;
-        
         return $this->dueDate;
     }
 
     /**
-     * @param DateTime $dueDate
+     * @param \DateTime $dueDate
      * @return Payment
      */
-    public function setDueDate(DateTime $dueDate)
+    public function setDueDate(\DateTime $dueDate)
     {
         $this->dueDate = $dueDate;
 
@@ -223,5 +226,35 @@ class Payment
     }
 
 
+    
+    /**
+     * @return Payment
+     */
+    public function setLicense(){
+
+        $payments=$this->getApplication()->getPayments();
+        if(sizeof($payments)>0)
+            $date=$this->getApplication()->getPayments()->last()->getDueDate();
+        else
+            $date=$this->getDate();
+            
+        $interval = new \DateInterval('P'.$this->getMonths().'M');
+        $date->add($interval);
+        $this->dueDate=$date;
+
+        $license=$date->getTimestamp();
+        $license=base64_encode($license);
+        $license=base64_encode($license);
+        $license=base64_encode($license);
+
+        $this->license=$license;
+
+        App::sendLicense($this);
+
+        return $this;
+    }
+    public function getLicense(){
+        return $this->license;    
+    }
 }
 

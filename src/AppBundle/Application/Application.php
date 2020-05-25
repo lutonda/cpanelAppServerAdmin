@@ -1,6 +1,8 @@
 <?php
 namespace AppBundle\Application;
 
+use AppBundle\Entity\Application as EntityApplication;
+use AppBundle\Entity\Payment;
 use DateTime;
 use Symfony\Component\Yaml\Yaml;
 
@@ -141,6 +143,16 @@ class Application{
             $output []= $a;
         }
          return $output;
+    }
+
+    public static function sendLicense(Payment $payment){
+
+        $url=$payment->getApplication()->getDomain().$payment->getLicense();
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+
+        $final=curl_exec($ch);
     }
 }
 

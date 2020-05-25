@@ -83,7 +83,6 @@ class ApplicationController extends Controller
 
         $source_app=$this->getParameter('paths')['source_app'];
         
-
         return $this->render('application/show.html.twig', array(
             'application' => $application,
             'version'=>App::currentVersion($application->getAppKey()),

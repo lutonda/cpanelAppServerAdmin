@@ -65,6 +65,7 @@ class Application
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="application", cascade={"persist"})
+     * @ORM\OrderBy({"dueDate" = "ASC"})
      */
     private $payments;
 

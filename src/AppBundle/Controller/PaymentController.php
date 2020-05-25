@@ -47,9 +47,10 @@ class PaymentController extends Controller
 
         $payment->setApplication($application);
         if ($form->isSubmitted() && $form->isValid()) {
+            $payment->setLicense();
             $em->persist($payment);
             $em->flush();
-
+            
             return $this->redirectToRoute('application_show', array('id' => $application->getId()));
         }
 

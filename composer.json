@@ -35,7 +35,8 @@
         "symfony/symfony": "3.4.*",
         "twig/twig": "^1.0||^2.0",
       "ext-json": "*",
-      "ext-http": "*"
+      "ext-http": "*",
+      "ext-curl": "*"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
