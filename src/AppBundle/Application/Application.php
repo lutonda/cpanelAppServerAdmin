@@ -119,17 +119,17 @@ class Application{
 
     public static function upgrade($name='admin'){
         $commands = array(
-            'echo $PWD',
-            'whoami',
+            //'echo $PWD',
+            //'whoami',
             'git reset --hard',
             'git fetch --tags',
             'git checkout $(git tag | sort -n | tail -1)',
-            'git status',
-            'git submodule sync',
-            'git submodule update',
-            'git submodule status',
+            //'git status',
+            //'git submodule sync',
+            //'git submodule update',
+            //'git submodule status',
             'rm -rf var/',
-            'php bin/console doctrine:schema:update --force',
+            //'php bin/console doctrine:schema:update --force',
         );
 
         chdir((new Application())->path.$name);
