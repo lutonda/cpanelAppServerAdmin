@@ -147,7 +147,7 @@ class Application{
 
     public static function sendLicense(Payment $payment){
 
-        $url=$payment->getApplication()->getDomain().'/app/api/init/license/'.$payment->getLicense();
+        $url='https://'.$payment->getApplication()->getDomain().'/app/api/init/license/'.$payment->getLicense();
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
