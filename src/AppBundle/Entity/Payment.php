@@ -237,7 +237,10 @@ class Payment
             $date=$this->getApplication()->getPayments()->last()->getDueDate();
         else
             $date=$this->getDate();
-            
+
+        if(is_null($date))
+            $date=new DateTime();
+
         $interval = new \DateInterval('P'.$this->getMonths().'M');
         $date->add($interval);
         $this->dueDate=$date;
