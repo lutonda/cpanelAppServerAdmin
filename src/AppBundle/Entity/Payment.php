@@ -239,7 +239,7 @@ class Payment
             $date=$this->getDate();
 
         if(is_null($date))
-            $date=new DateTime();
+            $date=new \DateTime();
 
         $interval = new \DateInterval('P'.$this->getMonths().'M');
         $date->add($interval);

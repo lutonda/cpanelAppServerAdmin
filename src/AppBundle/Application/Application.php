@@ -144,7 +144,6 @@ class Application{
         }
          return $output;
     }
-
     public static function sendLicense(Payment $payment){
 
         $url='https://'.$payment->getApplication()->getDomain().'/app/api/init/license/'.$payment->getLicense();
