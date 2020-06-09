@@ -41,12 +41,29 @@
                 <div class="col-md-6">
                     <table class="bordered">
                         <tbody>
-                        {% for payment in application.payments %}
+                        {%  set actual='' %}
+                        {%  set icon='' %}
+                        {%  set color='' %}
+                        {% for payment in application.payments|reverse %}
+                            {% if payment.dueDate|less_than  %}
+                                {%  set icon='times' %}
+                                {%  set color='danger' %}
+                            {% else %}
+                                {% if actual==''  %}
+                                    {% set actual='f'  %}
+                                    {% set icon='check' %}
+                                    {% set color='success' %}
+                                {% else %}
+                                    {% set icon='history' %}
+                                    {% set color='default' %}
+                                {% endif %}
+                            {% endif %}
+
                             <tr>
                                 <th>{{ payment.plan.name }}</th>
                                 <td>{{ payment.months }}  Months</td>
-                                <td class="btn btn-{% if payment.dueDate>'now'|date  %}success{% else %}danger{% endif %}" title="since {{payment.date|date('Y-m-d H:i:s')}}">
-                                    <i class="fa fa-{% if payment.dueDate>'now'|date  %}check{% else %}times{% endif %}"></i>
+                                <td class="btn btn-{{ color }}" title="since {{payment.date|date('Y-m-d H:i:s')}}">
+                                    <i class="fa fa-{{ icon }}"></i>
                                     {{ payment.dueDate|date('Y-m-d') }}
                                 </td>
                             </tr>
