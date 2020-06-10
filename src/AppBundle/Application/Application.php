@@ -9,28 +9,41 @@ use Symfony\Component\Yaml\Yaml;
 
 class Application{
 
-    protected $rootdomain='nova-erp.com';
-    protected $prefix="novanet";
-    protected $user='novanet';
-    protected $password="Z8XE1Yi4*-ko8)";
-    protected $server="cpanel.nova-erp.com";
+    protected $rootdomain;
+    protected $prefix;
+    protected $user;
+    protected $password;
+    protected $server;
 
     public $cPane;
 
-    protected $path='/home/novanet/apps/';
+    protected $path;
 
+    public function load(){
+        $string = file_get_contents("./config.json");
+        $json = json_decode($string, true);
+
+        $this->rootdomain=$json['rootdomain'];
+        $this->prefix=$json['prefix'];
+        $this->user=$json['user'];
+        $this->password=$json['password'];
+        $this->server=$json['server'];
+        $this->path=$json['path'];
+    }
     public function __construct()
     {
+        $this->load();
         $this->cPane=new cpanelAPI($this->user, $this->password, $this->server);
     }
+
 
     public static function build($name){
 
 
-        $ftp=new FTP();
+        /*$ftp=new FTP();
             $path=$ftp->create($name);
             var_dump($path);
-            print_r('<hr>');
+            print_r('<hr>');*/
         $domain=new Domain();
             $domain=$domain->create($name);
             var_dump($domain);
@@ -119,15 +132,9 @@ class Application{
 
     public static function upgrade($name='admin'){
         $commands = array(
-            //'echo $PWD',
-            //'whoami',
             'git reset --hard',
             'git fetch --tags',
             'git checkout $(git tag | sort -n | tail -1)',
-            //'git status',git
-            //'git submodule sync',
-            //'git submodule update',
-            //'git submodule status',
             'rm -rf var/',
             //'php bin/console doctrine:schema:update --force',
         );
@@ -144,6 +151,7 @@ class Application{
         }
          return $output;
     }
+
     public static function sendLicense(Payment $payment){
 
         $url='https://'.$payment->getApplication()->getDomain().'/app/api/init/license/'.$payment->getLicense();
