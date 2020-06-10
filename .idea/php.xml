@@ -48,5 +48,10 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
     </include_path>
   </component>
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="0.0.0.0" id="54dc2ca6-29d3-4a66-9f6c-6ec5e8dcc5bd" name="0.0.0.0" port="8100" />
+    </servers>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
 </project>

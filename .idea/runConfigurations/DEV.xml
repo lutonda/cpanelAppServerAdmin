@@ -1,10 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="DEV" type="PhpLocalRunConfigurationType" factoryName="PHP Console" singleton="false" path="$PROJECT_DIR$/bin/console" scriptParameters="server:run 0.0.0.0:8003">
-    <CommandLine>
-      <PhpTestInterpreterSettings>
-        <option name="interpreterName" value="PHP 7.3" />
-      </PhpTestInterpreterSettings>
-    </CommandLine>
+  <configuration default="false" name="DEV" type="PhpLocalRunConfigurationType" factoryName="PHP Console" singleton="false" path="$PROJECT_DIR$/bin/console" scriptParameters="server:run 0.0.0.0:8100">
     <method v="2" />
   </configuration>
 </component>
