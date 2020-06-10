@@ -10,14 +10,26 @@ class Domain extends Application implements IApplication {
 
     
     public function create($subdomain){
-        
-        $response = $this->cPane->uapi->SubDomain->addsubdomain(['rootdomain' => $this->rootdomain, 'domain' => $subdomain,'dir'=>$this->path . "/" . $subdomain . '/web']);
+        $path=$this->path;
+        $rootDomain=$this->rootdomain;
+        if(strpos($subdomain,'.free')) {
+            $subdomain=str_replace('.free','',$subdomain);
+            $path .= '../free/';
+            $rootDomain='free.'.$rootDomain;
+        }
+
+        $response = $this->cPane->uapi->SubDomain->addsubdomain(['rootdomain' => $rootDomain, 'domain' => $subdomain,'dir'=>$path . $subdomain . '/web']);
 
         return $response;
     }
 
     public function autossl($subdomain){
-        $response = $this->cPane->uapi->SSL->set_autossl_excluded_domains(['domains'  =>   $subdomain.'.'.$this->rootdomain]);
+        $rootDomain=$this->rootdomain;
+        if(strpos($subdomain,'.free')) {
+            $subdomain=str_replace('.free','',$subdomain);
+            $subdomain=$subdomain.'.free.'.$rootDomain;
+        }
+        $response = $this->cPane->uapi->SSL->set_autossl_excluded_domains(['domains'  =>   $subdomain]);
 
         return $response;
     }
