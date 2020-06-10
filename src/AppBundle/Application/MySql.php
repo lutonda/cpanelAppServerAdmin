@@ -12,6 +12,7 @@ class MySql extends Application implements IApplication{
     
     public function create($name){
 
+        $name=join('_',array_reverse(explode('.',$name)));
 
         //create database
         $response=$this->cPane->uapi->Mysql->create_database(['name'=> $this->prefix.'_'.$name]);
