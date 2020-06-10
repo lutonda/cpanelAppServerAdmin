@@ -44,6 +44,7 @@ class ApplicationController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $application = new Application();
         $form = $this->createForm('AppBundle\Form\ApplicationType', $application);
         $form->handleRequest($request);

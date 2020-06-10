@@ -1,9 +1,9 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: nova-erp.com
+    database_host: nova-vps.com
     database_port: null
-    database_name: novanet_nova_admin
-    database_user: novanet_super
+    database_name: novavpsc_admin
+    database_user: novavpsc_super
     database_password: 'DQMq?o&==8r^'
     mailer_transport: smtp
     mailer_host: 127.0.0.1
