@@ -40,10 +40,10 @@ class Application{
     public static function build($name){
 
 
-        /*$ftp=new FTP();
+        $ftp=new FTP();
             $path=$ftp->create($name);
             var_dump($path);
-            print_r('<hr>');*/
+            print_r('<hr>');
         $domain=new Domain();
             $domain=$domain->create($name);
             var_dump($domain);
