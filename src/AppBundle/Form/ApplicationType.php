@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Application\Application;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,7 +20,7 @@ class ApplicationType extends AbstractType
                 "widget_btn_append" => array(
                     array(
                         "type" => "button",
-                        "label" => "nova-erp.com",
+                        "label" => (new Application())->rootdomain,
                         "icon" => 'barcode',
                         "icon_inverted" => false,
                     )
