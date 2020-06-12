@@ -51,7 +51,7 @@ class ApplicationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $application->setDomain($application->getAppKey().(new App())->rootdomain);
+            $application->setDomain($application->getAppKey().'.'.(new App())->rootdomain);
             $client=$em->getRepository(Client::class)->findOneBy(['email'=>$application->getClient()->getEmail()]);
             if(!is_null($client))
                 $application->setClient($client);
