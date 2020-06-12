@@ -9,7 +9,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class Application{
 
-    protected $rootdomain;
+    public $rootdomain;
     protected $prefix;
     protected $user;
     protected $password;
@@ -19,7 +19,7 @@ class Application{
 
     protected $path;
 
-    public function load(){
+    protected function load(){
         $string = file_get_contents("/home/novavpsc/slots/nova.ao/admin/web/config.json");
         $json = json_decode($string, true);
 
