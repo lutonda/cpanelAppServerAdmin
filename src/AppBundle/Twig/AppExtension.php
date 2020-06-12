@@ -3,6 +3,7 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Application\Application;
 use AppBundle\Application\Application as App;
 use AppBundle\Entity\Payment;
 use Twig\Extension\AbstractExtension;
@@ -16,11 +17,16 @@ class AppExtension extends AbstractExtension
             new TwigFilter('app_version', [$this, 'appVersion']),
             new TwigFilter('payment_status', [$this, 'paymentStatus']),
             new TwigFilter('less_than', [$this, 'lessThan']),
+            new TwigFilter('domain_name', [$this, 'domainName']),
         ];
     }
 
     public function lessThan($date){
         return $date<new \DateTime();
+    }
+
+    public function domainName(){
+        return (new Application())->rootdomain;
     }
     public function paymentStatus(Payment $payment,$i=true){
 
