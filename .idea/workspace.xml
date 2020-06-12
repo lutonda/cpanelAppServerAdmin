@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f48043b5-6f44-4e25-bdf7-45b6d89b6c5c" name="Default Changelist" comment="config files from repo db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Application/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Application/Settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Application/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Application/Application.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,84 +165,7 @@
       <workItem from="1591622982066" duration="11187000" />
       <workItem from="1591634305435" duration="1588000" />
       <workItem from="1591731728631" duration="4012000" />
-      <workItem from="1591802101087" duration="13743000" />
-    </task>
-    <task id="LOCAL-00015" summary="more config">
-      <created>1577771729169</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1577771729169</updated>
-    </task>
-    <task id="LOCAL-00016" summary="more config">
-      <created>1577803746040</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1577803746040</updated>
-    </task>
-    <task id="LOCAL-00017" summary="more config">
-      <created>1577804294356</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1577804294356</updated>
-    </task>
-    <task id="LOCAL-00018" summary="more config">
-      <created>1577804412249</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1577804412249</updated>
-    </task>
-    <task id="LOCAL-00019" summary="sys upgrade from controller know path">
-      <created>1577804931822</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1577804931822</updated>
-    </task>
-    <task id="LOCAL-00020" summary="sys upgrade from controller know path">
-      <created>1577805058422</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1577805058422</updated>
-    </task>
-    <task id="LOCAL-00021" summary="sys upgrade from controller know path">
-      <created>1577805147299</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1577805147299</updated>
-    </task>
-    <task id="LOCAL-00022" summary="sys upgrade from controller know path">
-      <created>1577805224258</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1577805224258</updated>
-    </task>
-    <task id="LOCAL-00023" summary="sys upgrade from controller know path">
-      <created>1577805383355</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1577805383355</updated>
-    </task>
-    <task id="LOCAL-00024" summary="sys upgrade from controller know path">
-      <created>1577805491924</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1577805491924</updated>
-    </task>
-    <task id="LOCAL-00025" summary="sys upgrade from controller know path">
-      <created>1577805787230</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1577805787230</updated>
+      <workItem from="1591802101087" duration="16915000" />
     </task>
     <task id="LOCAL-00026" summary="sys upgrade from controller know path">
       <created>1577806257474</created>
@@ -510,7 +433,84 @@
       <option name="project" value="LOCAL" />
       <updated>1591911365247</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="config files from repo db">
+      <created>1591911410563</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911410563</updated>
+    </task>
+    <task id="LOCAL-00065" summary="config files from repo db">
+      <created>1591911435668</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911435668</updated>
+    </task>
+    <task id="LOCAL-00066" summary="config files from repo db">
+      <created>1591911493584</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911493584</updated>
+    </task>
+    <task id="LOCAL-00067" summary="config files from repo db">
+      <created>1591911498889</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911498889</updated>
+    </task>
+    <task id="LOCAL-00068" summary="config files from repo db">
+      <created>1591911523567</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911523567</updated>
+    </task>
+    <task id="LOCAL-00069" summary="config files from repo db">
+      <created>1591911570124</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911570124</updated>
+    </task>
+    <task id="LOCAL-00070" summary="config files from repo db">
+      <created>1591911583965</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911583965</updated>
+    </task>
+    <task id="LOCAL-00071" summary="config files from repo db">
+      <created>1591911606343</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911606343</updated>
+    </task>
+    <task id="LOCAL-00072" summary="config files from repo db">
+      <created>1591911627441</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911627441</updated>
+    </task>
+    <task id="LOCAL-00073" summary="config files from repo db">
+      <created>1591911693105</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1591911693105</updated>
+    </task>
+    <task id="LOCAL-00074" summary="config files from repo db">
+      <created>1591986676500</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1591986676500</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,9 +554,9 @@
     <MESSAGE value="ftp and file creationfrom server by cpanl and server stash" />
     <MESSAGE value="Build domain for free apps" />
     <MESSAGE value="frix nova.ao" />
-    <MESSAGE value="config files from repo db" />
     <MESSAGE value="release ftp" />
-    <option name="LAST_COMMIT_MESSAGE" value="release ftp" />
+    <MESSAGE value="config files from repo db" />
+    <option name="LAST_COMMIT_MESSAGE" value="config files from repo db" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2463" y="210" width="824" height="682" key="#CLI_Interpreters" timestamp="1590434361876">
@@ -571,14 +571,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2672" y="231" width="416" height="640" key="#com.intellij.ide.util.MemberChooser/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@1920.0.1920.1080" timestamp="1591802416466" />
-    <state x="4350" y="86" width="890" height="929" key="CommitChangelistDialog2" timestamp="1591911365165">
+    <state x="4350" y="86" width="890" height="929" key="CommitChangelistDialog2" timestamp="1591986676355">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
     <state x="510" y="108" key="CommitChangelistDialog2/1920.0.1920.1080/3840.0.1920.1080/0.24.1920.1056@0.24.1920.1056" timestamp="1590556235131" />
     <state x="2430" y="86" width="890" height="929" key="CommitChangelistDialog2/1920.0.1920.1080/3840.0.1920.1080/0.24.1920.1056@1920.0.1920.1080" timestamp="1590520476960" />
     <state x="510" y="108" width="890" height="929" key="CommitChangelistDialog2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@0.24.1920.1056" timestamp="1591732270746" />
     <state x="2430" y="86" width="890" height="929" key="CommitChangelistDialog2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@1920.0.1920.1080" timestamp="1591900771985" />
-    <state x="4350" y="86" width="890" height="929" key="CommitChangelistDialog2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@3840.0.1920.1080" timestamp="1591911365165" />
+    <state x="4350" y="86" width="890" height="929" key="CommitChangelistDialog2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@3840.0.1920.1080" timestamp="1591986676355" />
     <state width="598" height="526" key="DebuggerActiveHint" timestamp="1591902994534">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -684,14 +684,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2369" y="187" key="SettingsEditor/1920.0.1920.1080/3840.0.1920.1080/0.24.1920.1056@1920.0.1920.1080" timestamp="1590434822062" />
-    <state x="4395" y="288" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1591911367216">
+    <state x="4395" y="288" width="800" height="526" key="Vcs.Push.Dialog.v2" timestamp="1591986679035">
       <screen x="3840" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="306" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/3840.0.1920.1080/0.24.1920.1056@0.24.1920.1056" timestamp="1590556262980" />
     <state x="2475" y="288" width="800" height="526" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/3840.0.1920.1080/0.24.1920.1056@1920.0.1920.1080" timestamp="1590520512368" />
     <state x="555" y="306" width="800" height="526" key="Vcs.Push.Dialog.v2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@0.24.1920.1056" timestamp="1591732299241" />
     <state x="2475" y="288" width="800" height="526" key="Vcs.Push.Dialog.v2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@1920.0.1920.1080" timestamp="1591822832197" />
-    <state x="4395" y="288" width="800" height="526" key="Vcs.Push.Dialog.v2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@3840.0.1920.1080" timestamp="1591911367216" />
+    <state x="4395" y="288" width="800" height="526" key="Vcs.Push.Dialog.v2/3840.0.1920.1080/1920.0.1920.1080/0.24.1920.1056@3840.0.1920.1080" timestamp="1591986679035" />
     <state x="2665" y="466" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591626547793">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
