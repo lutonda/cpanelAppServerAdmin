@@ -11,7 +11,17 @@ class FTP extends Application implements IApplication{
 
     }
 
+    public function appPathName($name){
 
+        $path = $this->path;
+
+        if (strpos($name, 'free'))
+        {
+            $name = str_replace('.free', '', $name);
+            $path.='../free/';
+        }
+        return $path .  $name . '/web';
+    }
     public function create($name)
     {
 
