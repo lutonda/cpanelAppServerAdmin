@@ -22,7 +22,7 @@ class MySql extends Application implements IApplication{
         $response=$this->cPane->uapi->Mysql->create_user(['name'=> $this->prefix.'_'.$name,'password'=>'12!"qwASzx_'.$name.'_MYSQL']);
         var_dump($response);
         print_r('<hr>');
-        //Grant users privileges to database
+        //Granting users privileges to database
         $response=$this->cPane->uapi->Mysql->set_privileges_on_database([
         'user'       => $this->prefix.'_'.$name,
         'database'   => $this->prefix.'_'.$name,
