@@ -27,6 +27,7 @@ class MySql extends Application implements IApplication{
         'user'       => $this->prefix.'_'.$name,
         'database'   => $this->prefix.'_'.$name,
         'privileges' => 'ALTER,ALTER ROUTINE,CREATE,CREATE ROUTINE,CREATE TEMPORARY TABLES,CREATE VIEW,DELETE,DROP,EVENT,EXECUTE,INDEX,INSERT,LOCK TABLES,REFERENCES,SELECT,SHOW VIEW,TRIGGER,UPDATE']);
+
         var_dump($response);
         print_r('<hr>');
         //create database backup file
