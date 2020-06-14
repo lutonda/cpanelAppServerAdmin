@@ -81,15 +81,16 @@ class Application{
 
 
         $path = (new Application())->path;
-
-        if (strpos($name, 'free'))
+        if($name=='admin')
+            $path.='../'.$name;
+        else if (strpos($name, 'free'))
         {
             $name = str_replace('.free', '', $name);
             $path.='../free/';
         }
+
         try{
-            
-        //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
+
         chdir($path.$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
