@@ -69,7 +69,8 @@ class MySql extends Application implements IApplication{
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
-
+        $di=exec('mysqldump -u '.$prefix.'_'.$name.' -p12!"qwASzx_'.$name.'_MYSQL'.' '.$prefix.'_'.$name.' > '.$path.$prefix.'_'.$name.'.sql');
+        var_dump($di);
         // Return schema for the username_example_db database.
         $data = $response=$this->cPane->uapi->Mysql->dump_database_schema(['dbname'       => $prefix.'_'.$name]);
         var_dump($data->data);
