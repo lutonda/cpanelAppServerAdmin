@@ -35,7 +35,7 @@ class FTP extends Application implements IApplication{
 
         try {
 
-            var_dump('Entering path: /home/novanet/apps/ <hr/>');
+            var_dump($path.' <hr/>');
             chdir($path);
 
             var_dump('Cloning repo to path: '.$path.'<hr/>');
