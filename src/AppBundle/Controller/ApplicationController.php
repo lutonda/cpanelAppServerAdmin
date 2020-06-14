@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Application\FileUploader;
 use AppBundle\Application\FTP;
+use AppBundle\Application\MySql;
 use AppBundle\Entity\Application;
 use AppBundle\Application\Application as App;
 use AppBundle\Entity\Client;
@@ -83,12 +84,32 @@ class ApplicationController extends Controller
         $deleteForm = $this->createDeleteForm($application);
 
         $source_app=$this->getParameter('paths')['source_app'];
-        
+
         return $this->render('application/show.html.twig', array(
             'application' => $application,
             'version'=>App::currentVersion($application->getAppKey()),
             'rootVersion'=>App::lastesVersion(),
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a application entity.
+     *
+     * @Route("/backup/{id}", name="application_mysql_backup")
+     * @Method("GET")
+     */
+    public function applicationBackupAction(Application $application)
+    {
+
+        $app=new MySql();
+        $app->backUp($application->getAppKey());
+        $source_app=$this->getParameter('paths')['source_app'];
+
+        return $this->render('application/show.html.twig', array(
+            'application' => $application,
+            'version'=>App::currentVersion($application->getAppKey()),
+            'rootVersion'=>App::lastesVersion(),
         ));
     }
 
