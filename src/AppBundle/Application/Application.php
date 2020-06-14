@@ -92,7 +92,7 @@ class Application{
         try{
 
         chdir($path.$name);
-        var_dump($path.$name);
+
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
         $commitDate = new DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
