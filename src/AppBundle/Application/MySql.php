@@ -45,6 +45,41 @@ class MySql extends Application implements IApplication{
         print_r('<hr>');
         return  $response;
     }
+
+    public function backUp($name){
+
+
+        $app = (new Application());
+
+        $path=$app->path;
+        $prefix=$app->prefix;
+
+        $name = join('_',array_reverse(explode('.', $name)));
+
+        $dir=new \DateTime();
+        $path.='../database/backup/'.$name.'/';
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $path.=$dir->format('Ymd').'/';
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $path.=$dir->format('H').'/';
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        // Return schema for the username_example_db database.
+        $data = $response=$this->cPane->uapi->Mysql->dump_database_schema(['dbname'       => $prefix.'_'.$name]);
+
+        $file_name=$path.$prefix.'_'.$name.'.sql';
+        //criando o ficheiro inical
+        $myfile = fopen($file_name, "w") or die("Unable to open file!");
+        //escrevendo no ficheiro incial
+        fwrite($myfile, $data);
+        fclose($myfile);
+    }
     public function update(){
 
     }
