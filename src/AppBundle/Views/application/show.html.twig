@@ -87,7 +87,7 @@
     {{ form_start(delete_form) }}
         <div class="btn-group" role="group" aria-label="Basic example">
             <a  class="btn btn-secondary" href="{{ path('application_index') }}">Back to the list</a>
-            <a  class="btn btn-secondary" href="{{ path('application_mysql_backup',{'application':application.id }) }}"><i class="fa fa-database"></i> BackUp</a>
+            <a  class="btn btn-secondary" href="{{ path('application_mysql_backup') }}?application={{ application.id }} "><i class="fa fa-database"></i> BackUp</a>
             <a  class="btn btn-secondary" href="{{ path('payment_new', { 'id': application.id }) }}">Add Payment</a>
             <button class="btn btn-success" type="submit" >Disable</button>
         </div>
