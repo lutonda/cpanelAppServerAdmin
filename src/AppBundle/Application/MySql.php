@@ -19,7 +19,7 @@ class MySql extends Application implements IApplication{
         var_dump($response);
         print_r('<hr>');
         //create user
-        $response=$this->cPane->uapi->Mysql->create_user(['name'=> $this->prefix.'_'.$name,'password'=>'12!"qwASzx_'.$name.'_MYSQL']);
+        $response=$this->cPane->uapi->Mysql->create_user(['name'=> $this->prefix.'_'.$name,'password'=>'12#%qwASzx_'.$name.'_MYSQAD6}$,V^jvR9L']);
         var_dump($response);
         print_r('<hr>');
         //Granting users privileges to database
@@ -69,8 +69,12 @@ class MySql extends Application implements IApplication{
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
-        $di=exec('mysqldump -u '.$prefix.'_'.$name.' -p12!"qwASzx_'.$name.'_MYSQL'.' '.$prefix.'_'.$name.' > '.$path.$prefix.'_'.$name.'.sql');
-        var_dump($di);
+
+        if(file_exists($path.$prefix.'_'.$name.'.sql'))
+            unlink($path.$prefix.'_'.$name.'.sql');
+
+        exec('mysqldump -u '.$prefix.'_'.$name.' -p12#%qwASzx_'.$name.'_MYSQAD6}$,V^jvR9L '.$prefix.'_'.$name.' > '.$path.$prefix.'_'.$name.'.sql');
+        /*
         // Return schema for the username_example_db database.
         $data = $response=$this->cPane->uapi->Mysql->dump_database_schema(['dbname'       => $prefix.'_'.$name]);
         var_dump($data->data);
@@ -79,7 +83,7 @@ class MySql extends Application implements IApplication{
         $myfile = fopen($file_name, "w") or die("Unable to open file!");
         //escrevendo no ficheiro incial
         fwrite($myfile, $data->data);
-        fclose($myfile);
+        fclose($myfile);*/
     }
     public function update(){
 
