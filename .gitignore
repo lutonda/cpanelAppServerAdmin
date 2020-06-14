@@ -16,8 +16,8 @@
 /vendor/
 /web/bundles/
 /var/
-/vendor/
-/var/
+/.theia/
+/.idea/
 /composer-setup.php
 /error_log
 /web/.user.ini
