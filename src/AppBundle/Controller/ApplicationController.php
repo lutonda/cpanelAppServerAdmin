@@ -96,21 +96,28 @@ class ApplicationController extends Controller
     /**
      * Finds and displays a application entity.
      *
-     * @Route("/backup/{id}", name="application_mysql_backup")
+     * @Route("/databse/backup", name="application_mysql_backup")
      * @Method("GET")
      */
-    public function applicationBackupAction(Application $application)
+    public function applicationBackupAction(Request $request)
     {
 
-        $app=new MySql();
-        $app->backUp($application->getAppKey());
-        $source_app=$this->getParameter('paths')['source_app'];
 
-        return $this->render('application/show.html.twig', array(
-            'application' => $application,
-            'version'=>App::currentVersion($application->getAppKey()),
-            'rootVersion'=>App::lastesVersion(),
-        ));
+        $em = $this->getDoctrine()->getManager();
+        $app = new MySql();
+        if($application=$request->get('application')) {
+            $application = $em->getRepository(Application::class)->find($application);
+            $app->backUp($application->getAppKey());
+        }
+        else {
+            $applications = $em->getRepository(Application::class)->findAll();
+
+            foreach ($applications as $application)
+                if (!strpos($application->getAppKey(), 'free'))
+                    $app->backUp($application->getAppKey());
+        }
+
+        return $this->redirect($this->generateUrl('application_index'));
     }
 
     /**
