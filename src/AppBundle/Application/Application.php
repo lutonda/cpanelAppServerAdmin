@@ -79,10 +79,18 @@ class Application{
 
     public static function currentVersion($name='admin'){
 
+
+        $path = (new Application())->path;
+
+        if (strpos($name, 'free'))
+        {
+            $name = str_replace('.free', '', $name);
+            $path.='../free/';
+        }
         try{
             
         //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        chdir((new Application())->path.$name);
+        chdir($path.$name);
         $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
         $currentVersion= trim(exec('git describe --abbrev=0 --tags'));
         $commitDate = new DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
