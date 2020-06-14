@@ -61,7 +61,7 @@ class MySql extends Application implements IApplication{
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
-        $path.=$dir->format('Ymd').'/';
+        $path.=$dir->format('Y_m_d').'/';
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
@@ -72,7 +72,7 @@ class MySql extends Application implements IApplication{
 
         // Return schema for the username_example_db database.
         $data = $response=$this->cPane->uapi->Mysql->dump_database_schema(['dbname'       => $prefix.'_'.$name]);
-
+        var_dump($data);
         $file_name=$path.$prefix.'_'.$name.'.sql';
         //criando o ficheiro inical
         $myfile = fopen($file_name, "w") or die("Unable to open file!");
