@@ -153,7 +153,7 @@ class Application{
         // exec commands
         $output = [];
         foreach($commands AS $command){
-            $tmp = shell_exec($command);
+            $tmp = exec($command);
             $a=new \stdClass();
             $a->command=$command;
             $a->result=trim($tmp);
