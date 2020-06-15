@@ -141,6 +141,7 @@ class Application{
     }
 
     public static function upgrade($name='admin'){
+
         $commands = array(
             'git reset --hard',
             'git fetch --tags',
@@ -149,7 +150,15 @@ class Application{
             //'php bin/console doctrine:schema:update --force',
         );
 
-        chdir((new Application())->path.$name);
+        $path = (new Application())->path;
+
+        if (strpos($name, 'free'))
+        {
+            $name = str_replace('.free', '', $name);
+            $path.='../free/';
+        }
+
+        chdir($path.$name);
         // exec commands
         $output = [];
         foreach($commands AS $command){
