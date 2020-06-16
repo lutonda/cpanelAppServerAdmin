@@ -48,11 +48,13 @@ class MySql extends Application implements IApplication{
 
     public function backUp($name){
 
-
         $app = (new Application());
 
         $path=$app->path;
         $prefix=$app->prefix;
+
+        if($name=='admin')
+            $path.='../';
 
         $name = join('_',array_reverse(explode('.', $name)));
 

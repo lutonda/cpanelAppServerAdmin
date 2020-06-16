@@ -112,6 +112,7 @@ class ApplicationController extends Controller
         else {
             $applications = $em->getRepository(Application::class)->findAll();
 
+            $app->backUp('admin');
             foreach ($applications as $application)
                 if (!strpos($application->getAppKey(), 'free'))
                     $app->backUp($application->getAppKey());
