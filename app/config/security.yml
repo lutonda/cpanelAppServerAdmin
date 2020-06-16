@@ -1,6 +1,10 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
+
+    access_control:
+        - { path: ^/application/databse/backup, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
     encoders:
         # this internal class is used by Symfony to represent in-memory users
         Symfony\Component\Security\Core\User\User: 'plaintext'
