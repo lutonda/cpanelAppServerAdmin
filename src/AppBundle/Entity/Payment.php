@@ -77,6 +77,15 @@ class Payment
         $this->dueDate=null;
     }
 
+    public function __clone()
+    {
+     return $this;
+
+    }
+
+    public function toArray(){
+        return (array)self;
+    }
 
     /**
      * Get id
