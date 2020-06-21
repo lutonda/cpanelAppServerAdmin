@@ -2,6 +2,9 @@
 
 namespace AppBundle\Entity;
 
+
+use JMS\Serializer\Annotation AS JMS;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="plan")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PlanRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Plan
 {
@@ -19,18 +23,29 @@ class Plan
      *  @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+
      */
     private $id;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="plan")
+
      */
     private $payments;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="decimal", precision=32, scale=2)
+     * @JMS\Expose()
+     */
+    private $price;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
+     * @JMS\Expose()
      */
     private $name;
 
@@ -38,50 +53,87 @@ class Plan
      * @var int
      *
      * @ORM\Column(name="invoices", type="integer")
+     * @JMS\Expose()
      */
     private $invoices;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="amount", type="decimal")
+     * @JMS\Expose()
+     */
+    private $amount;
 
     /**
      * @var int
      *
      * @ORM\Column(name="wareHouses", type="integer")
+     * @JMS\Expose()
      */
     private $wareHouses;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="supplies", type="boolean")
+     * @JMS\Expose()
+     */
+    private $supllies;
 
     /**
      * @var int
      *
      * @ORM\Column(name="users", type="integer")
+     * @JMS\Expose()
      */
     private $users;
 
     /**
-     * @var int
+     * @var bool
      *
-     * @ORM\Column(name="accounting", type="integer")
+     * @ORM\Column(name="accounting", type="boolean")
+     * @JMS\Expose()
      */
     private $accounting;
 
 
     /**
-     * @var int
+     * @var bool
      *
-     * @ORM\Column(name="auditing", type="integer")
+     * @ORM\Column(name="auditing", type="boolean")
+     * @JMS\Expose()
      */
     private $auditing;
 
     /**
-     * @var int
+     * @var bool
      *
-     * @ORM\Column(name="pos", type="integer")
+     * @ORM\Column(name="pos", type="boolean")
+     * @JMS\Expose()
      */
     private $pos;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="reports", type="boolean")
+     * @JMS\Expose()
+     */
+    private $reports;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="dayly_back_ups", type="integer")
+     * @JMS\Expose()
+     */
+    private $daylyBackUps;
 
 
     /**
      * Get id
      *
-     * @return int
      */
     public function getId()
     {
