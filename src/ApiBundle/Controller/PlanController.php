@@ -2,12 +2,29 @@
 
 namespace ApiBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use AppBundle\Entity\Plan;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\View\View;
+
+/**
+ * Address controller.
+ *
+ * @Route("plans")
+ */
 class PlanController extends Controller
 {
-    public function indexAction($name)
+    /**
+     * @Rest\Get("/all")
+     */
+    public function indexAction()
     {
-        return $this->render('', array('name' => $name));
+        $plans=$this->getDoctrine()->getRepository(Plan::class)->findAll();
+        return $plans;
     }
 }
