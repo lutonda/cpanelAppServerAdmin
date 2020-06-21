@@ -27,6 +27,10 @@ security:
             pattern: ^/application/databse/backup
             security: false
 
+        api:
+            pattern: ^/Api/V1/
+            security: false
+
         main:
             pattern: ^/
             provider: backend_users
