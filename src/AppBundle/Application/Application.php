@@ -3,6 +3,7 @@ namespace AppBundle\Application;
 
 use AppBundle\Entity\Application as EntityApplication;
 use AppBundle\Entity\Payment;
+use AppBundle\Entity\Plan;
 use DateTime;
 use Symfony\Component\Yaml\Yaml;
 
@@ -173,12 +174,18 @@ class Application{
 
     public static function sendLicense(Payment $payment){
 
-        $url='https://'.$payment->getApplication()->getDomain().'/app/api/init/license/'.$payment->getLicense();
+        $url='http://0.0.0.0:8000/app/api/init/license/'.$payment->getLicense();
 
-        $ch = curl_init($url);
+
+        $plan=json_encode((array)$payment->getPlan());
+        $plan=str_replace("\\\\",'',$plan);
+        $plan=str_replace("\u0000AppBundleEntityPlan\u0000",'',$plan);
+        $plan=json_decode($plan);
+        $final=RestClient::post($url,(array)$plan);
+       /* $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
 
-        $final=curl_exec($ch);
+        $final=curl_exec($ch);*/
     }
 }
 
