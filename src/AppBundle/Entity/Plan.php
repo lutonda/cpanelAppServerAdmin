@@ -131,6 +131,15 @@ class Plan
     private $daylyBackUps;
 
 
+    public function __clone()
+    {
+        return $this;
+
+    }
+
+    public function toArray(){
+        return (array)$this;
+    }
     /**
      * Get id
      *
