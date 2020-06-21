@@ -20,7 +20,7 @@ class Application{
     protected $path;
 
     protected function load(){
-        $string = file_get_contents("/home/novavpsc/slots/nova.ao/admin/web/config.json");
+        $string = file_get_contents("../web/config.json");
         $json = json_decode($string, true);
 
         $this->rootdomain=$json['rootdomain'];
