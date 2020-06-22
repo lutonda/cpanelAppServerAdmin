@@ -174,7 +174,8 @@ class Application{
 
     public static function sendLicense(Payment $payment){
 
-        $url='http://0.0.0.0:8000/app/api/init/license/'.$payment->getLicense();
+        $url='http://'.$payment->getApplication()->getDomain().'/app/api/init/license/'.$payment->getLicense();
+        //$url='http://0.0.0.0:8000/app/api/init/license/'.$payment->getLicense();
 
 
         $plan=json_encode((array)$payment->getPlan());
