@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation AS JMS;
+use AppBundle\Application\Encrypt;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
 use AppBundle\Application\Application as App;
@@ -11,6 +13,7 @@ use AppBundle\Application\Application as App;
  *
  * @ORM\Table(name="payment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PaymentRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Payment
 {
@@ -58,7 +61,7 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="license", type="string", nullable=true)
+     * @ORM\Column(name="license", type="string",length=5000, nullable=true)
      */
     private $license;
 
@@ -127,7 +130,7 @@ class Payment
     /**
      * Get plan
      *
-     * @return string
+     * @return Plan
      */
     public function getPlan()
     {
@@ -245,20 +248,25 @@ class Payment
         if(sizeof($payments)>0)
             $date=$this->getApplication()->getPayments()->last()->getDueDate();
         else
-            $date=$this->getDate();
-
-        if(is_null($date))
             $date=new \DateTime();
 
+        $startDate=$date;
         $interval = new \DateInterval('P'.$this->getMonths().'M');
         $date->add($interval);
         $this->dueDate=$date;
 
-        $license=$date->getTimestamp();
-        $license=base64_encode($license);
-        $license=base64_encode($license);
-        $license=base64_encode($license);
+        $license=Encrypt::JWT()->encode([
+            "body"=>toJson($this->getPlan()),
+            "iss" => "admin.nova-erp.com",
+            "aud" => "nova-erp.com",
+            "iat" => (new \DateTime())->getTimestamp(),
+            "nbf" => (new \DateTime())->getTimestamp(),//$startDate->getTimestamp(),
+            "exp" => $this->dueDate->getTimestamp()
+        ]);
 
+        $plan=$this->getPlan();
+        $plan->setLicense($license);
+        //$this->setLicense($license);
         $this->license=$license;
 
         App::sendLicense($this);
