@@ -10,8 +10,8 @@ use AppBundle\Application\Application as App;
 use AppBundle\Entity\Client;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Application controller...
@@ -23,8 +23,7 @@ class ApplicationController extends Controller
     /**
      * Lists all application entities.
      *
-     * @Route("/", name="application_index")
-     * @Method("GET")
+     * @Route("/", name="application_index", methods={"GET"})
      */
     public function indexAction()
     {
@@ -41,8 +40,7 @@ class ApplicationController extends Controller
     /**
      * Creates a new application entity.
      *
-     * @Route("/new", name="application_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", name="application_new", methods={"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -76,8 +74,7 @@ class ApplicationController extends Controller
     /**
      * Finds and displays a application entity.
      *
-     * @Route("/{id}", name="application_show")
-     * @Method("GET")
+     * @Route("/{id}", name="application_show", methods={"GET", "POST"})
      */
     public function showAction(Application $application)
     {
@@ -96,8 +93,7 @@ class ApplicationController extends Controller
     /**
      * Finds and displays a application entity.
      *
-     * @Route("/databse/backup", name="application_mysql_backup")
-     * @Method("GET")
+     * @Route("/databse/backup", name="application_mysql_backup", methods={"GET"})
      */
     public function applicationBackupAction(Request $request)
     {
@@ -124,8 +120,7 @@ class ApplicationController extends Controller
     /**
      * Finds and displays a application entity.
      *
-     * @Route("/{id}/logo/upload", name="application_logo_upload")
-     * @Method("POST")
+     * @Route("/{id}/logo/upload", name="application_logo_upload", methods={"POST"})
      */
     public function logoUploadAction(Application $application, Request $request, FileUploader $uploader, LoggerInterface $logger)
     {
@@ -139,8 +134,7 @@ class ApplicationController extends Controller
     /**
      * Finds and displays a application entity.
      *
-     * @Route("/upgrade/{id}", name="application_upgrade")
-     * @Method("GET")
+     * @Route("/upgrade/{id}", name="application_upgrade", methods={"GET"})
      */
     public function upgradeAction(Application $application)
     {
@@ -158,8 +152,7 @@ class ApplicationController extends Controller
     /**
      * Displays a form to edit an existing application entity.
      *
-     * @Route("/{id}/edit", name="application_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", name="application_edit", methods={"GET", "POST"})
      */
     public function editAction(Request $request, Application $application)
     {
@@ -183,8 +176,7 @@ class ApplicationController extends Controller
     /**
      * Deletes a application entity.
      *
-     * @Route("/{id}", name="application_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="application_delete", methods={"DELETE"})
      */
     public function deleteAction(Request $request, Application $application)
     {
