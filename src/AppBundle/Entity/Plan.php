@@ -336,5 +336,101 @@ class Plan
         return $this;
     }
 
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     */
+    public function setAmount(float $amount): void
+    {
+        $this->amount = $amount;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSupllies(): bool
+    {
+        return $this->supllies;
+    }
+
+    /**
+     * @param bool $supllies
+     */
+    public function setSupllies(bool $supllies)
+    {
+        $this->supllies = $supllies;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isReports()
+    {
+        return $this->reports;
+    }
+
+    /**
+     * @param bool $reports
+     */
+    public function setReports(bool $reports)
+    {
+        $this->reports = $reports;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDaylyBackUps()
+    {
+        return $this->daylyBackUps;
+    }
+
+    /**
+     * @param int $daylyBackUps
+     */
+    public function setDaylyBackUps(int $daylyBackUps)
+    {
+        $this->daylyBackUps = $daylyBackUps;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLicense()
+    {
+        return $this->license;
+    }
+
+    /**
+     * @param string $license
+     */
+    public function setLicense(string $license)
+    {
+        $this->license = $license;
+    }
+
 }
 
