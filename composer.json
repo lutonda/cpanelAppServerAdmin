@@ -4,7 +4,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle"
+            "AppBundle\\": "src/AppBundle",
+            "ApiBundle\\": "src/ApiBundle"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -29,7 +30,8 @@
         "ext-simplexml": "*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
-        "friendsofsymfony/rest-bundle": "^3.0.0",
+        "firebase/php-jwt": "^5.2",
+        "friendsofsymfony/rest-bundle": "^2.8.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "jms/serializer-bundle": "^3.6",
         "mopa/bootstrap-bundle": "^3.3",
