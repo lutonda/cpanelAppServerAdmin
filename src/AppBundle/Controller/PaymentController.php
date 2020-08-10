@@ -2,11 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Application\Application as App;
 use AppBundle\Entity\Application;
 use AppBundle\Entity\Payment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Payment controller.
@@ -18,8 +19,7 @@ class PaymentController extends Controller
     /**
      * Lists all payment entities.
      *
-     * @Route("/", name="payment_index")
-     * @Method("GET")
+     * @Route("/", name="payment_index", methods={"GET"})
      */
     public function indexAction()
     {
@@ -35,8 +35,7 @@ class PaymentController extends Controller
     /**
      * Creates a new payment entity.
      *
-     * @Route("/new/{id}", name="payment_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new/{id}", name="payment_new", methods={"GET", "POST"})
      */
     public function newAction(Application $application,Request $request)
     {
@@ -50,7 +49,7 @@ class PaymentController extends Controller
             $payment->setLicense();
             $em->persist($payment);
             $em->flush();
-            
+
             return $this->redirectToRoute('application_show', array('id' => $application->getId()));
         }
 
@@ -59,12 +58,21 @@ class PaymentController extends Controller
             'form' => $form->createView(),
         ));
     }
+    /**
+     * Creates a new payment entity.
+     *
+     * @Route("/refresh/{id}", name="payment_refresh", methods={"GET"})
+     */
+    public function refreshAction(Payment $payment,Request $request)
+    {
+        App::sendLicense($payment);
+        return $this->redirectToRoute('application_show', array('id' => $payment->getApplication()->getId()));
+    }
 
     /**
      * Finds and displays a payment entity.
      *
-     * @Route("/{id}", name="payment_show")
-     * @Method("GET")
+     * @Route("/{id}", name="payment_show",methods={"GET"})
      */
     public function showAction(Payment $payment)
     {
@@ -79,8 +87,7 @@ class PaymentController extends Controller
     /**
      * Displays a form to edit an existing payment entity.
      *
-     * @Route("/{id}/edit", name="payment_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", name="payment_edit", methods={"GET", "POST"})
      */
     public function editAction(Request $request, Payment $payment)
     {
@@ -104,8 +111,7 @@ class PaymentController extends Controller
     /**
      * Deletes a payment entity.
      *
-     * @Route("/{id}", name="payment_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="payment_delete", methods={"DELETE"})
      */
     public function deleteAction(Request $request, Payment $payment)
     {
