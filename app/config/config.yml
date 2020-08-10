@@ -107,6 +107,8 @@ sensio_framework_extra:
 
 
 fos_rest:
+    routing_loader:
+        enabled: false
     body_listener: true
     format_listener:
         rules:
