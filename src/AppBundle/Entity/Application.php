@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation AS JMS;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
 
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  *
  * @ORM\Table(name="application")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ApplicationRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Application
 {
@@ -17,7 +19,7 @@ class Application
      * @var \Ramsey\Uuid\UuidInterface
      *
      * @ORM\Id
-     *  @ORM\Column(type="uuid", unique=true)
+     * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
@@ -27,6 +29,7 @@ class Application
      * @var string
      *
      * @ORM\Column(name="app_key", type="string", length=50)
+     * @JMS\Expose()
      */
     private $appKey;
 
@@ -34,6 +37,7 @@ class Application
      * @var string
      *
      * @ORM\Column(name="domain", type="string", length=50)
+     * @JMS\Expose()
      */
     private $domain;
 
@@ -41,6 +45,7 @@ class Application
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=50)
+     * @JMS\Expose()
      */
     private $path;
 
@@ -48,6 +53,7 @@ class Application
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
+     * @JMS\Expose()
      */
     private $name;
 
@@ -55,17 +61,20 @@ class Application
      * @var bool
      *
      * @ORM\Column(name="is_active", type="boolean")
+     * @JMS\Expose()
      */
     private $isActive;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client", inversedBy="application", cascade={"persist"})
+     * @JMS\Expose()
      */
     private $client;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Payment", mappedBy="application", cascade={"persist"})
-     * @ORM\OrderBy({"dueDate" = "DESC"})
+     * @ORM\OrderBy({"dueDate" = "ASC"})
+     * @JMS\Expose()
      */
     private $payments;
 
@@ -73,6 +82,7 @@ class Application
      * @var DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @JMS\Expose()
      */
     private $date;
 
