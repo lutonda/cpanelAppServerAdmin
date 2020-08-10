@@ -10,8 +10,8 @@ security:
         backend_users:
             memory:
                 users:
-                    ndongala.augusto@nova-erp.com: { password: '$2y$13$jxGxcIuqDju', roles: ['ROLE_ADMIN'] }
-                    antonio.tomas@nova-erp.com: { password: 'Antonio@tomas', roles: ['ROLE_ADMIN'] }
+                    #ndongala.augusto@nova-erp.com: { password: '$2y$13$jxGxcIuqDju', roles: ['ROLE_ADMIN'] }
+                    #antonio.tomas@nova-erp.com: { password: 'Antonio@tomas', roles: ['ROLE_ADMIN'] }
                     sebastiao.lutonda@nova-erp.com: { password: '$2y$13$PFi1IrGwXCZ', roles: ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'] }
 
         in_memory:
@@ -37,6 +37,7 @@ security:
             logout: true
             http_basic:
                 realm: Secured Area
+            logout_on_user_change: true
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
