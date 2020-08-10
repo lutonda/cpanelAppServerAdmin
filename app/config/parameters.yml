@@ -1,6 +1,6 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: nova-vps.com
+    database_host: localhost
     database_port: null
     database_name: novavpsc_admin
     database_user: novavpsc_super
