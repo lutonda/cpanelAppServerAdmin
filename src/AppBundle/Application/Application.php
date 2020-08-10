@@ -21,7 +21,7 @@ class Application{
     protected $path;
 
     protected function load(){
-        $string = file_get_contents("../web/config.json");
+        $string = file_get_contents($_SERVER['DOCUMENT_ROOT']."/config.json");
         $json = json_decode($string, true);
 
         $this->rootdomain=$json['rootdomain'];
