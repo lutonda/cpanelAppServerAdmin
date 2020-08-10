@@ -28,7 +28,7 @@ class Application
     /**
      * @var string
      *
-     * @ORM\Column(name="app_key", type="string", length=50)
+     * @ORM\Column(name="app_key", type="string", length=50, unique=true)
      * @JMS\Expose()
      */
     private $appKey;
@@ -44,7 +44,7 @@ class Application
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=50)
+     * @ORM\Column(name="path", type="string", length=50, unique=true)
      * @JMS\Expose()
      */
     private $path;

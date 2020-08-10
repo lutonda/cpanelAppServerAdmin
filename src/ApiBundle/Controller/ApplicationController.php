@@ -48,9 +48,12 @@ class ApplicationController extends Controller
         $application->setAppKey($application->getAppKey() . '.free');
         $application->setDomain($application->getAppKey() .'.'. (new App())->rootdomain);
         $client = $em->getRepository(Client::class)->findOneBy(['email' => $application->getClient()->getEmail()]);
-
         if (!is_null($client))
             $application->setClient($client);
+
+        $app=$em->getRepository(Application::class)->findOneBy(['appKey'=>$application->getAppKey()]);
+        if(!is_null($app))
+            return ['app key in use',$application,$r];
 
         $application->setPath((new FTP())->appPathName($application->getAppKey()));
         $em->persist($application);
