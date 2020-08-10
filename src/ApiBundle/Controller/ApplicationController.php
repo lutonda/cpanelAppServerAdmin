@@ -43,7 +43,7 @@ class ApplicationController extends Controller
         $application = cast(Application::class, toObject($request->get('application')));
         $application->setClient(cast(Client::class,$application->getClient()));
         $application->setAppKey($application->getAppKey() . '.free');
-        $application->setDomain($application->getAppKey() . (new App())->rootdomain);
+        $application->setDomain($application->getAppKey() .'.'. (new App())->rootdomain);
         $client = $em->getRepository(Client::class)->findOneBy(['email' => $application->getClient()->getEmail()]);
         if (!is_null($client))
             $application->setClient($client);
