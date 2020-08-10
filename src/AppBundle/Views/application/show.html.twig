@@ -38,7 +38,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3">Payments</div>
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <table class="bordered">
                         <tbody>
                         {%  set actual='' %}
@@ -65,6 +65,9 @@
                                 <td class="btn btn-{{ color }}" title="since {{payment.date|date('Y-m-d H:i:s')}}">
                                     <i class="fa fa-{{ icon }}"></i>
                                     {{ payment.dueDate|date('Y-m-d') }}
+                                </td>
+                                <td>
+                                    <a href="{{ path('payment_refresh',{id:payment.id}) }}" class="btn btn-circle btn-xs"><i class="fa fa-cloud-upload"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}

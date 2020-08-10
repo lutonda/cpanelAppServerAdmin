@@ -12,6 +12,7 @@
     <table>
         <thead>
             <tr>
+                <th>Price</th>
                 <th>Name</th>
                 <th>Invoices</th>
                 <th>Warehouses</th>
@@ -25,6 +26,7 @@
         <tbody>
         {% for plan in plans %}
             <tr>
+                <td>{{ plan.price }}</td>
                 <td>{{ plan.name }}</td>
                 <td>{% if plan.invoices == 0 %} Unimited {% else %} {{ plan.invoices }} {% endif %}</td>
                 <td>{% if plan.wareHouses == 0 %} Unimited {% else %}  {{ plan.wareHouses }} {% endif %}</td>
