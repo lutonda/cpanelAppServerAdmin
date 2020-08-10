@@ -40,22 +40,26 @@ class ApplicationController extends Controller
 
         $r=$request->getClientIp();
         $em = $this->getDoctrine()->getManager();
+        /**
+         * @var Application $application
+         */
         $application = cast(Application::class, toObject($request->get('application')));
         $application->setClient(cast(Client::class,$application->getClient()));
         $application->setAppKey($application->getAppKey() . '.free');
         $application->setDomain($application->getAppKey() .'.'. (new App())->rootdomain);
         $client = $em->getRepository(Client::class)->findOneBy(['email' => $application->getClient()->getEmail()]);
+
         if (!is_null($client))
             $application->setClient($client);
 
         $application->setPath((new FTP())->appPathName($application->getAppKey()));
         $em->persist($application);
-        //    $em->flush();
+        $em->flush();
 
-        //  $path = App::build($application->getAppKey());
+        $path = App::build($application->getAppKey());
 
         //return $this->redirectToRoute('payment_new', array('id' => $application->getId()));
-
+        $application->setName($application->getName().'|'.$r);
         return $application;
 
     }
