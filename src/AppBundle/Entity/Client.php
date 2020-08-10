@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use JMS\Serializer\Annotation AS JMS;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="client")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ClientRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Client
 {
@@ -26,6 +28,7 @@ class Client
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=50)
+     * @JMS\Expose()
      */
     private $name;
 
@@ -33,6 +36,7 @@ class Client
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @JMS\Expose()
      */
     private $email;
 
@@ -40,6 +44,7 @@ class Client
      * @var int
      *
      * @ORM\Column(name="telephone", type="integer")
+     * @JMS\Expose()
      */
     private $telephone;
 
@@ -47,11 +52,13 @@ class Client
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
+     * @JMS\Expose()
      */
     private $country;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Application", mappedBy="client", cascade={"persist"})
+     * @JMS\Expose()
      */
     private $applications;
 
