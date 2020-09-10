@@ -175,7 +175,7 @@ class Application{
     public static function sendLicense(Payment $payment){
 
         $url='http://'.$payment->getApplication()->getDomain().'/app/api/init/license/v9.0.1';
-        $url='http://0.0.0.0:8000/app/api/init/license/v9.0.1';
+      //  $url='http://0.0.0.0:8000/app/api/init/license/v9.0.1';
 
         $final=RestClient::post($url,['license'=>$payment->getLicense()]);
     }
