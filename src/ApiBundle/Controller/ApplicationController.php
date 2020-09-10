@@ -53,7 +53,7 @@ class ApplicationController extends Controller
 
         $app=$em->getRepository(Application::class)->findOneBy(['appKey'=>$application->getAppKey()]);
         if(!is_null($app))
-            return ['app key in use',$application,$r];
+            return false;//'app key in use';//,$application,$r];
 
         $application->setPath((new FTP())->appPathName($application->getAppKey()));
         $em->persist($application);

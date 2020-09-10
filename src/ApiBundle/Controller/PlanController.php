@@ -4,6 +4,7 @@ namespace ApiBundle\Controller;
 
 
 use AppBundle\Entity\Plan;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -25,6 +26,6 @@ class PlanController extends Controller
     public function indexAction()
     {
         $plans=$this->getDoctrine()->getRepository(Plan::class)->findAll();
-        return $plans;
+        return  new JsonResponse($plans);
     }
 }
