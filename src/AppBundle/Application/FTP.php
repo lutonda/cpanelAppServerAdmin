@@ -32,7 +32,7 @@ class FTP extends Application implements IApplication{
             $name = str_replace('.free', '', $name);
             $path.='../free/';
         }
-
+/*
         try {
 
             var_dump($path.' <hr/>');
@@ -55,7 +55,7 @@ class FTP extends Application implements IApplication{
             var_dump($e->getMessage());
         }
         print_r('<hr>');
-        print_r($this->path .  $name . '/web');
+        print_r($this->path .  $name . '/web');*/
         return $path .  $name . '/web';
     }
 

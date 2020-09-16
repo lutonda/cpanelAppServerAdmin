@@ -18,7 +18,7 @@ class Domain extends Application implements IApplication {
             $rootDomain='free.'.$rootDomain;
         }
 
-        $response = $this->cPane->uapi->SubDomain->addsubdomain(['rootdomain' => $rootDomain, 'domain' => $subdomain,'dir'=>$path . $subdomain . '/web']);
+        $response = $this->cPane->uapi->SubDomain->addsubdomain(['rootdomain' => $rootDomain, 'domain' => $subdomain,'dir'=>$path . '/web']);
 
         return $response;
     }

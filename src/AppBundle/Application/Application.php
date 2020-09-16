@@ -41,10 +41,10 @@ class Application{
     public static function build($name){
 
 
-        $ftp=new FTP();
+        /*$ftp=new FTP();
             $path=$ftp->create($name);
             var_dump($path);
-            print_r('<hr>');
+            print_r('<hr>');*/
         $domain=new Domain();
             $domain=$domain->create($name);
             var_dump($domain);
@@ -60,11 +60,11 @@ class Application{
             $domain=$domain->autossl($name);
             var_dump($domain);
         print_r('<hr>');
-
+/*
         $path=$ftp->createStach($name);
             var_dump($path);
-        print_r('<hr>');
-        return $path;
+        print_r('<hr>');*/
+        return $domain->path;
     }
 
     public function sysInformation(){
@@ -102,7 +102,7 @@ class Application{
         ///return sprintf('v%s.%s.%s-dev.%s (%s)', self::MAJOR, self::MINOR, self::PATCH, $commitHash, $commitDate->format('Y-m-d H:i:s'));
         $v=new \stdClass();
         $v->version=explode('-',$currentVersion)[0];
-        $v->build=explode('-',$currentVersion)[1];
+        $v->build=explode('-',$currentVersion)[1].' '.$commitHash;
         $v->date=$commitDate;
         }catch(\Exception $e){
             
@@ -145,8 +145,8 @@ class Application{
 
         $commands = array(
             'git reset --hard',
-            'git fetch --tags',
-            'git checkout $(git tag | sort -n | tail -1)',
+            ' git fetch --all --tags',
+            'git checkout tags/$(git tag | sort -n | tail -1)',
             'rm -rf var/',
             //'php bin/console doctrine:schema:update --force',
         );
