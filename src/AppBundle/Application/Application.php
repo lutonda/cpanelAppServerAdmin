@@ -118,7 +118,7 @@ class Application{
 
         try{
         //chdir("/home/dev/Lab/php/cpanelAppServerAdmin/");
-        chdir((new Application())->path."demo");
+        chdir((new Application())->path);
 
         exec('git fetch --tags');
         $version = trim(exec('git tag | sort -n | tail -1'));
