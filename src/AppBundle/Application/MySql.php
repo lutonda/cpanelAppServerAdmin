@@ -31,13 +31,13 @@ class MySql extends Application implements IApplication{
         var_dump($response);
         print_r('<hr>');
         //create database backup file
-        //exec('cp '.$this->path.'../database/initial_db.sql '.$this->path.'../database/temp/'.$this->prefix.'_'.$name.'.sql');
+        exec('cp '.$this->path.'data/database/initial_db.sql '.$this->path.'../database/temp/'.$this->prefix.'_'.$name.'.sql');
         //print_r('cp '.$this->path.'../database/initial_db.sql '.$this->path.'../database/temp/'.$this->prefix.'_'.$name.'.sql');
         //exec('mysql -u username -p '.$this->prefix.'_'.$name.' < '.$this->path.'nova/db/initial.sql');
 
         //restore database backup
         $response=$this->cPane->uapi->Backup->restore_databases([
-        'backup'                 => $this->path.'data/database/initial_db.sql',
+        'backup'                 => $this->path.'../database/temp/'.$this->prefix.'_'.$name.'.sql',
         'verbose'                => '1',
         'timeout'                => '3600']);
 
