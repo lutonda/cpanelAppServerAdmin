@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Plan controller.
  *
- * @Route("plan")
+ * @Route("outside")
  */
-class PlanController extends Controller
+class OutsideController extends Controller
 {
     /**
      * Lists all plan entities.
@@ -35,16 +35,16 @@ class PlanController extends Controller
     /**
      * Lists all plan entities.
      *
-     * @Route("/outSide/page", name="plan_outSide")
+     * @Route("/plan", name="outSide_plan")
      * @Method("GET")
      */
     public function outsideAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $plans = $em->getRepository('AppBundle:Plan')->findAll();
+        $plans = $em->getRepository('AppBundle:Plan')->findBy([],['price'=>'asc']);
 
-        return $this->render('plan/outSide/plan.html.twig', array(
+        return $this->render('outSide/plan.html.twig', array(
             'plans' => $plans,
         ));
     }
