@@ -36,11 +36,11 @@
                             <li>Relatórios</li>
                             <li> {{ plan.daylyBackUps }} BackUps</li>
                         </ul>
-                        {% if plan.name|lower=='professional' %}
-                        <a href="#!" class="btn pricing-plan-purchase-btn">Free</a>
+                        {% if plan.name|lower=='free' %}
+                            <a href="#!" class="btn pricing-plan-purchase-btn">Free</a>
                         {% else %}
-                        <a href="#!" class="btn pricing-plan-purchase-btn">Purchase</a>
-                            {% endif %}
+                            <a href="#!" class="btn pricing-plan-purchase-btn">Purchase</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
